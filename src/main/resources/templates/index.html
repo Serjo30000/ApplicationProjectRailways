@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thyneleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+    <body>
+    <div class="header">
+        <div class="headerBlock">
+            <div class="logo">
+                <a href="/"><img class="logoImg" th:src="@{/img/logotype.png}" alt="Logotype" /></a>
+            </div>
+            <div class="spaceLogo">
+
+            </div>
+            <div class="logoName" sec:authorize="isAuthenticated()">
+                <a class="logoNameLogin" href="/account" sec:authentication="name">
+                </a>
+                <div class="logoNameExit">
+                    <div class="logoNameExitColor">
+                        <a class="logoNameExitLink" href="/logout">Выйти</a>
+                    </div>
+                </div>
+            </div>
+            <div class="logoName" sec:authorize="!isAuthenticated()">
+                <a class="logoNameLogin" href="/" >
+                    Логин
+                </a>
+                <div class="logoNameExit">
+                    <div class="logoNameExitColor">
+                        <a class="logoNameExitLink" href="/login">Войти</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div  class="indexTable">
+        <div class="indexTableBlocks">
+            <div class="indexTableBlocksElem">
+                <div class="indexTableBlocksElemHeader">
+                    Регистрация
+                </div>
+                <div class="indexTableBlocksElemDown">
+                    <div class="indexTableBlocksElemDownText">
+                        Создайте новый аккаунт
+                    </div>
+                    <form th:action="@{/registration}" method="get" class="indexTableBlocksElemDownBut">
+                        <button class="indexTableBlocksElemDownButton" type="submit">Перейти</button>
+                    </form>
+                </div>
+            </div>
+            <div class="indexTableBlocksElem" sec:authorize="!isAuthenticated()">
+                <div class="indexTableBlocksElemHeader">
+                    Вход
+                </div>
+                <div class="indexTableBlocksElemDown">
+                    <div class="indexTableBlocksElemDownText">
+                        Выполните вход в аккаунт
+                    </div>
+                    <form th:action="@{/login}" method="get" class="indexTableBlocksElemDownBut">
+                        <button class="indexTableBlocksElemDownButton" type="submit">Перейти</button>
+                    </form>
+                </div>
+            </div>
+            <div class="indexTableBlocksElem" sec:authorize="isAuthenticated()">
+                <div class="indexTableBlocksElemHeader">
+                    Выход
+                </div>
+                <div class="indexTableBlocksElemDown">
+                    <div class="indexTableBlocksElemDownText">
+                        Выполните выход из аккаунта
+                    </div>
+                    <form th:action="@{/logout}" method="get" class="indexTableBlocksElemDownBut">
+                        <button class="indexTableBlocksElemDownButton" type="submit">Перейти</button>
+                    </form>
+                </div>
+            </div>
+            <div class="indexTableBlocksElem">
+                <div class="indexTableBlocksElemHeader">
+                    Покупка билета
+                </div>
+                <div class="indexTableBlocksElemDown">
+                    <div class="indexTableBlocksElemDownText">
+                        Приобретение билетов для поездки
+                    </div>
+                    <form th:action="@{/mainClient}" method="get" class="indexTableBlocksElemDownBut">
+                        <button class="indexTableBlocksElemDownButton" type="submit">Перейти</button>
+                    </form>
+                </div>
+            </div>
+            <div class="indexTableBlocksElem">
+                <div class="indexTableBlocksElemHeader">
+                    Админ панель
+                </div>
+                <div class="indexTableBlocksElemDown">
+                    <div class="indexTableBlocksElemDownText">
+                        Панель для редактирования данных
+                    </div>
+                    <form th:action="@{/adminPanel}" method="get" class="indexTableBlocksElemDownBut">
+                        <button class="indexTableBlocksElemDownButton" type="submit">Перейти</button>
+                    </form>
+                </div>
+            </div>
+            <div class="indexTableBlocksElem">
+                <div class="indexTableBlocksElemHeader">
+                    Панель предприятия
+                </div>
+                <div class="indexTableBlocksElemDown">
+                    <div class="indexTableBlocksElemDownText">
+                        Панель для редактирования поездов и маршрутов
+                    </div>
+                    <form th:action="@{/companyPanel}" method="get" class="indexTableBlocksElemDownBut">
+                        <button class="indexTableBlocksElemDownButton" type="submit">Перейти</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="free">
+
+    </div>
+    <div class="basement">
+        <div class="basementBlock">
+            <div class="basementBlockLeft">
+                <div class="basementBlockLeftName">
+                    О сайте
+                </div>
+                <div class="basementBlockLeftText">
+                    Сайт создан для проекта по теме "РЖД", по предмету Современные технологии объектно-ориентированного программирования.
+                </div>
+            </div>
+            <div class="basementBlockRight">
+                <div class="basementBlockRightName">
+                    Ссылки
+                </div>
+                <div class="basementBlockRightLink">
+                    <a href="https://www.rzd.ru/ru/9269"><img alt="logo VK" class="basementBlockRightLinkImg" th:src="@{/img/logotype.png}"></a>
+                    <a href="https://vk.com/id310386679"><img alt="logo RR" class="basementBlockRightLinkImg" th:src="@{/img/vk.png}"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thyneleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Покупка билета</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="header">
+    <div class="headerBlock">
+        <div class="logo">
+            <a href="/"><img class="logoImg" th:src="@{/img/logotype.png}" alt="Logotype" /></a>
+        </div>
+        <div class="spaceLogo">
+            <div class="spaceLogoName">
+                <a class="spaceLogoNameLink" href="/mainClient/myTicket">
+                    Мои билеты
+                </a>
+            </div>
+            <div class="spaceLogoName">
+                <a class="spaceLogoNameLink" href="/mainClient/scheduleTrain">
+                    Поезда и маршруты
+                </a>
+            </div>
+            <div  class="spaceLogoName">
+                <a class="spaceLogoNameLink" href="/mainClient/scheduleTerminal">
+                    Вокзалы
+                </a>
+            </div>
+        </div>
+        <div class="logoName" sec:authorize="isAuthenticated()">
+            <a class="logoNameLogin" href="/account" sec:authentication="name">
+            </a>
+            <div class="logoNameExit">
+                <div class="logoNameExitColor">
+                    <a class="logoNameExitLink" href="/logout">Выйти</a>
+                </div>
+            </div>
+        </div>
+        <div class="logoName" sec:authorize="!isAuthenticated()">
+            <a class="logoNameLogin" href="/" >
+                Логин
+            </a>
+            <div class="logoNameExit">
+                <div class="logoNameExitColor">
+                    <a class="logoNameExitLink" href="/login">Войти</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="free">
+
+</div>
+<div  class="tableBlock">
+    <div class="scheduleBlocksArrival" >
+        <div class="scheduleHeaderArrival">Приобритение билета</div>
+        <div class="buyHeader">Введите данные:</div>
+        <form class="buyInfoFrom" th:action="@{/mainClient/buyCreditCard}" th:object="${orderTicket}" method="get">
+            <div class="loginFormBlockCompany">
+
+            </div>
+            <div class="loginFormBlockCompany">
+                <div class="loginFormBlockCompanyText">
+                    <input class="settingFormBlockInput" name="nameUser" placeholder="Имя" type="text"  required/>
+                </div>
+                <div class="loginFormBlockCompanyText">
+                    <input class="settingFormBlockInput" name="surnameUser" placeholder="Фамилия" type="text"  required/>
+                </div>
+            </div>
+            <div class="loginFormBlockCompany">
+                <div class="loginFormBlockCompanyText">
+                    <input class="settingFormBlockInput" name="patronymicUser" placeholder="Отчество" type="text"  required/>
+                </div>
+                <div class="loginFormBlockCompanyText">
+                    <select class="settingFormBlockInput" name="sexUser"  required>
+                        <option selected="selected" th:value="Мужчина" th:text="Мужчина"></option>
+                        <option th:value="Женщина" th:text="Женщина"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="loginFormBlockCompany">
+                <div class="loginFormBlockCompanyText">
+                    <div class="buyTextInput">Дата рождения:</div>
+                </div>
+                <div class="loginFormBlockCompanyText">
+                    <input class="settingFormBlockInput" name="birthdayUser" placeholder="День рождения" type="date" required/>
+                </div>
+            </div>
+            <div class="loginFormBlockDown">
+                <div class="loginFormBlockDownLinks">
+                    <a class="loginFormBlockDownLinkReg" th:href="@{/mainClient/buyPlace(ticketId=${undoLink},trainId=${trainId},arrivalId=${arrivalId},vanId=${vanId})}">Вернуться</a>
+                </div>
+                <div class="loginFormBlockDownBut">
+                    <input type="hidden" name="ticketId" th:value="${undoLink}"/>
+                    <input type="hidden" name="trainId" th:value="${trainId}"/>
+                    <input type="hidden" name="arrivalId" th:value="${arrivalId}"/>
+                    <input type="hidden" name="vanId" th:value="${vanId}"/>
+                    <input type="hidden" name="compartmentId" th:value="${compartmentId}"/>
+                    <input type="hidden" name="placeId" th:value="${placeId}"/>
+                    <input type="hidden" name="userId" th:value="${userId}"/>
+                    <button class="loginFormBlockDownButton" type="submit">Перейти</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+<div class="free">
+
+</div>
+<div class="basement">
+    <div class="basementBlock">
+        <div class="basementBlockLeft">
+            <div class="basementBlockLeftName">
+                О сайте
+            </div>
+            <div class="basementBlockLeftText">
+                Сайт создан для проекта по теме "РЖД", по предмету Современные технологии объектно-ориентированного программирования.
+            </div>
+        </div>
+        <div class="basementBlockRight">
+            <div class="basementBlockRightName">
+                Ссылки
+            </div>
+            <div class="basementBlockRightLink">
+                <a href="https://www.rzd.ru/ru/9269"><img alt="logo VK" class="basementBlockRightLinkImg" th:src="@{/img/logotype.png}"></a>
+                <a href="https://vk.com/id310386679"><img alt="logo RR" class="basementBlockRightLinkImg" th:src="@{/img/vk.png}"></a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

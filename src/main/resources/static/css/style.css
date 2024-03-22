@@ -1,0 +1,1792 @@
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    background-color: #e9eaed;
+}
+.header{
+    height: 100px;
+    width: 100%;
+    background-color: #ffffff;
+    box-sizing: border-box;
+}
+.search{
+    height: 120px;
+    width: 100%;
+    background-color: #e9eaed;
+    box-sizing: border-box;
+    padding-top: 25px;
+}
+.free{
+    height: 50px;
+    width: 100%;
+    background-color: #e9eaed;
+    box-sizing: border-box;
+    padding-top: 25px;
+}
+.sort{
+    height: 120px;
+    width: 100%;
+    background-color: #e9eaed;
+    box-sizing: border-box;
+    padding-top: 25px;
+}
+.sortBlocks{
+    height: 120px;
+    width: 70%;
+    display: flex;
+    justify-content:center;
+    margin-left:15%;
+}
+.content{
+    min-height: 100vh;
+    width: 100%;
+    background-color: #e9eaed;
+    box-sizing: border-box;
+    padding-top: 25px;
+}
+.basement{
+    height: 250px;
+    width: 100%;
+    background-color: #464a53;
+    box-sizing: border-box;
+    padding-top: 25px;
+}
+.basementBlock{
+    margin-top:25px;
+    height: 200px;
+    width: 70%;
+    margin-left:15%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+.basementBlockLeft{
+    height: 200px;
+    width: 50%;
+}
+.basementBlockLeftName{
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 30px;
+    line-height: 28px;
+    color:#ffffff;
+}
+.basementBlockLeftText{
+    height: 140px;
+    width: 100%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 24px;
+    line-height: 28px;
+    color:#ffffff;
+}
+.basementBlockRight{
+    height: 200px;
+    width: 50%;
+}
+.basementBlockRightName{
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 30px;
+    line-height: 28px;
+    color:#ffffff;
+}
+.basementBlockRightLink{
+    height: 140px;
+    width: 100%;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+}
+.basementBlockRightLinkImg{
+    height: 50px;
+    width:50px;
+}
+.contentBlock{
+    width: 70%;
+    margin-left: 15%;
+    display: flex;
+    justify-content:start;
+    align-items: start;
+    background-color: #e9eaed;
+}
+.filter{
+    height: 1450px;
+    width: 25%;
+    background-color: #ffffff;
+}
+.filterBlock{
+    height: 1450px;
+    width: 100%;
+    background-color: #ffffff;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    align-items: center;
+}
+.filterBlockName{
+    height: 50px;
+    width: 100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 30px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.filterBlockNamePrice{
+    height: 50px;
+    width: 100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 24px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.filterBlockNamePriceN{
+    height: 20px;
+    width: 100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 20px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.filterBlockPrice{
+    height: 50px;
+    width: 100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.filterBlockPriceC{
+    height: 20px;
+    width: 100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.filterBlockPriceInput{
+    height: 40px;
+    width: 80%;
+    background-color: #ffffff;
+    font-size: 20px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.filterBlockPriceСheckbox{
+    height: 20px;
+    width: 80%;
+    background-color: #ffffff;
+    font-size: 20px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.filterBlockButton{
+    height: 50px;
+    width: 100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.filterBlockButtonSubmit{
+    height: 40px;
+    width: 80%;
+    background-color: #ffffff;
+    font-size: 20px;
+    line-height: 18px;
+    color:#e21a1a;
+}
+.filterBlockButtonSubmit:hover{
+    background-color: #e21a1a;
+    color:#ffffff;
+}
+.billet{
+    width: 75%;
+    background-color: #e9eaed;
+}
+.searchBlock{
+    width: 70%;
+    height:80px;
+    margin-left: 15%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background-color: #e9eaed;
+}
+.sortBlock{
+    width: 75%;
+    height:80px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background-color: #e9eaed;
+}
+.sortBlockReset{
+    margin-left:5%;
+    width: 20%;
+    height:80px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background-color: #e9eaed;
+}
+.sortBlockChoice1{
+    width: 30%;
+    height:80px;
+    background-color: #ffffff;
+}
+.sortBlockChoice2{
+    width: 30%;
+    height:80px;
+    margin-left: 5%;
+    background-color: #ffffff;
+}
+.sortBlockButton{
+    width: 30%;
+    height:80px;
+    margin-left: 5%;
+    background-color: #ffffff;
+}
+.sortBlockButtonReset{
+    width: 100%;
+    height:80px;
+    font-size: 20px;
+    line-height: 18px;
+    color:#e21a1a;
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+.sortBlockButtonReset:hover{
+    color:#ffffff;
+    background-color: #e21a1a;
+    border-color: #e21a1a;
+}
+.sortBlockChoice1Select{
+    width: 100%;
+    height:80px;
+    font-size: 20px;
+    line-height: 18px;
+    color:#1f1f24;
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+.sortBlockChoice2Select{
+    width: 100%;
+    height:80px;
+    font-size: 20px;
+    line-height: 18px;
+    color:#1f1f24;
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+.sortBlockButtonSubmit{
+    width: 100%;
+    height:80px;
+    font-size: 20px;
+    line-height: 18px;
+    color:#e21a1a;
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+.sortBlockButtonSubmit:hover{
+    color:#ffffff;
+    background-color: #e21a1a;
+    border-color: #e21a1a;
+}
+.billetBlock{
+    width: 90%;
+    height:230px;
+    margin-left: 10%;
+    margin-top: 25px;
+    background-color: #ffffff;
+}
+.billetBlockWindow{
+    width: 80%;
+    height:200px;
+    margin-left: 10%;
+}
+.billetBlockWindowType{
+    width: 100%;
+    height:40px;
+    display:flex;
+    justify-content:start;
+    align-items: center;
+    font-size: 16px;
+    line-height: 18px;
+    color: #e21a1a;
+}
+.billetBlockWindowNameRoute{
+    width: 100%;
+    height:40px;
+    display:flex;
+    justify-content:start;
+    align-items: center;
+}
+.billetBlockWindowName{
+    width: 30%;
+    height:40px;
+    display:flex;
+    justify-content:start;
+    align-items: center;
+    font-size: 20px;
+    line-height: 18px;
+    color: #1f1f24;
+}
+.billetBlockWindowRoute{
+    width: 70%;
+    height:40px;
+    display:flex;
+    justify-content:start;
+    align-items: center;
+}
+.billetBlockWindowRouteButton{
+    width: 30%;
+    height:30px;
+    font-size: 16px;
+    line-height: 18px;
+    color: #e21a1a;
+    background-color: #ffffff;
+}
+.billetBlockWindowRouteButton:hover{
+    color: #ffffff;
+    background-color: #e21a1a;
+}
+.billetBlockWindowDateCompartment{
+    width: 100%;
+    height:80px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.billetBlockWindowDate{
+    width: 50%;
+    height:80px;
+}
+.billetBlockWindowCompartment{
+    width: 50%;
+    height:80px;
+}
+.billetBlockWindowCompartmentText{
+    margin-left:10%;
+    width: 90%;
+    height:80px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 16px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.billetBlockWindowDateText{
+    display:flex;
+    justify-content:start;
+    align-items: center;
+    width: 100%;
+    height:40px;
+    font-size: 16px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.billetBlockWindowChoice{
+    width: 100%;
+    height:40px;
+    display:flex;
+    justify-content:start;
+    align-items: center;
+}
+.billetBlockWindowChoiceButton{
+    width: 30%;
+    height:30px;
+    font-size: 16px;
+    line-height: 18px;
+    color: #e21a1a;
+    background-color: #ffffff;
+}
+.billetBlockWindowChoiceButton:hover{
+    color: #ffffff;
+    background-color: #e21a1a;
+}
+.headerBlock{
+    width: 70%;
+    height:100px;
+    margin-left: 15%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background-color: #ffffff;
+}
+.logo{
+    width: 15%;
+    height:100px;
+}
+.spaceLogo{
+    width: 65%;
+    height:100px;
+    display:flex;
+    justify-content:space-around;
+}
+.spaceLogoName{
+    width: 33%;
+    height:100px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+.spaceLogoNameLink{
+    text-decoration:none;
+    font-size: 24px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.spaceLogoNameLink:hover{
+    color:#e21a1a;
+}
+.spaceLogoNameAdmin{
+    width: 25%;
+    height:100px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+.spaceLogoNameLinkAdmin{
+    text-decoration:none;
+    font-size: 24px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.spaceLogoNameLinkAdmin:hover{
+    color:#e21a1a;
+}
+.logoName{
+    width: 25%;
+    height:100px;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    align-items: center;
+}
+.logoImg{
+    width: 100%;
+    height:100px;
+}
+.logoNameLogin{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    width: 100%;
+    height:50px;
+    font-size: 30px;
+    line-height: 18px;
+    text-decoration:none;
+    color:#1f1f24;
+}
+.logoNameLogin:hover{
+    color:#e21a1a;
+}
+.logoNameExit{
+
+    width: 100%;
+    height:50px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    width: 50%;
+    height:40px;
+    margin-left:50%px;
+
+}
+.logoNameExitLink{
+    text-decoration: none;
+    color:#1f1f24;
+}
+.logoNameExitLink:hover{
+    color:#ffffff;
+}
+.logoNameExitColor{
+    font-size: 24px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.logoNameExit:hover{
+    background-color: #e21a1a;
+
+}
+.searchBlockTown1{
+    width: 19%;
+    height:80px;
+    background-color: #ffffff;
+}
+.searchBlockTown2{
+    width: 19%;
+    margin-left:1%;
+    height:80px;
+    background-color: #ffffff;
+}
+.searchBlockDate1{
+    width: 19%;
+    margin-left:1%;
+    height:80px;
+    background-color: #ffffff;
+}
+.searchBlockDate2{
+    width: 19%;
+    margin-left:1%;
+    height:80px;
+    background-color: #ffffff;
+}
+.searchBlockButton{
+    width: 20%;
+    margin-left:1%;
+    height:80px;
+    background-color: #ffffff;
+}
+.searchBlockTown1Input{
+    width: 100%;
+    height:80px;
+    background-color: #ffffff;
+    border-color: #ffffff;
+    font-size: 20px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.searchBlockTown2Input{
+    width: 100%;
+    height:80px;
+    background-color: #ffffff;
+    border-color: #ffffff;
+    font-size: 20px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.searchBlockDate1Input{
+    width: 100%;
+    height:80px;
+    background-color: #ffffff;
+    border-color: #ffffff;
+    font-size: 20px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.searchBlockDate2Input{
+    width: 100%;
+    height:80px;
+    background-color: #ffffff;
+    border-color: #ffffff;
+    font-size: 20px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.searchBlockButtonSubmit{
+    width: 100%;
+    height:80px;
+    background-color: #ffffff;
+    border-color: #ffffff;
+    font-size: 20px;
+    line-height: 18px;
+    color:#e21a1a;
+}
+.searchBlockButtonSubmit:hover{
+    background-color: #e21a1a;
+    border-color: #e21a1a;
+    color:#ffffff;
+}
+.tableBlock{
+    min-height: 60vh;
+    width: 100%;
+    background-color: #e9eaed;
+    box-sizing: border-box;
+    padding-top: 25px;
+}
+.loginForm{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    height:1000px;
+    width:100%;
+    flex-wrap: wrap;
+}
+.loginFormBlock{
+    height:300px;
+    width:35%;
+    background-color:#ffffff;
+}
+.loginFormBlockName{
+    height:50px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 30px;
+    line-height: 18px;
+    color:#e21a1a;
+}
+.loginFormBlockText{
+    height:50px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 20px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.loginFormBlockDown{
+    height:100px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.loginFormBlockDownBut{
+    height:100px;
+    width:50%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.loginFormBlockDownLinks{
+    height:100px;
+    width:50%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.loginFormBlockDownLink{
+    height:50px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 20px;
+    line-height: 18px;
+    color:#1f1f24;
+    text-decoration:none;
+}
+.loginFormBlockDownLinkReg{
+    height:100px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 20px;
+    line-height: 18px;
+    color:#1f1f24;
+    text-decoration:none;
+}
+.loginFormBlockDownLink:hover{
+    color:#e21a1a;
+}
+.loginFormBlockDownButton{
+    height:50px;
+    width:50%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 20px;
+    line-height: 18px;
+    color:#e21a1a;
+    background-color:#ffffff;
+}
+.loginFormBlockDownButton:hover{
+    color:#ffffff;
+    background-color:#e21a1a;
+}
+.loginFormBlockDownButtonReg{
+    height:50px;
+    width:85%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 20px;
+    line-height: 18px;
+    color:#e21a1a;
+    background-color:#ffffff;
+}
+.loginFormBlockDownButtonReg:hover{
+    color:#ffffff;
+    background-color:#e21a1a;
+}
+.loginFormBlockBlock{
+    height:100px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.loginFormBlockBlockUsername{
+    height:100px;
+    width:50%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.loginFormBlockBlockPassword{
+    height:100px;
+    width:50%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.loginFormBlockBlockUsernameInput{
+    height:30px;
+    width:70%;
+    font-size: 20px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.loginFormBlockBlockPasswordInput{
+    height:30px;
+    width:70%;
+    font-size: 20px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.loginFormBlockBlockUsernameText{
+    height:30px;
+    width:100%;
+    font-size: 20px;
+    line-height: 18px;
+    color:#e21a1a;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    text-decoration:none;
+}
+.loginFormBlockBlockUsernameButton{
+    width: 50%;
+    height:30px;
+    background-color: #ffffff;
+    font-size: 20px;
+    line-height: 18px;
+    color:#e21a1a;
+}
+.loginFormBlockBlockUsernameButton:hover{
+    background-color: #e21a1a;
+    color:#ffffff;
+}
+.registrationForm{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    height:1000px;
+    width:100%;
+}
+.registrationFormBlock{
+    height:450px;
+    width:35%;
+    background-color:#ffffff;
+}
+.registrationFormBlockCompany{
+     height:400px;
+     width:50%;
+     background-color:#ffffff;
+ }
+.loginFormBlockCompany{
+   height:50px;
+   width:100%;
+   display:flex;
+   flex-wrap: wrap;
+   justify-content:center;
+   align-items: center;
+}
+.loginFormBlockCompanyText{
+    height:50px;
+   width:50%;
+   display:flex;
+   justify-content:center;
+   align-items: center;
+}
+.settingFormBlockInputCompany{
+    width: 80%;
+    height:30px;
+    background-color: #ffffff;
+    font-size: 20px;
+    line-height: 18px;
+    color:#e21a1a;
+    margin-left:-30%;
+}
+.settingFormBlockInputCompany:hover{
+    background-color: #e21a1a;
+    color:#ffffff;
+}
+.registrationFormBlockName{
+    height:50px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 30px;
+    line-height: 18px;
+    color:#e21a1a;
+}
+.registrationFormBlockNameInput{
+    height:30px;
+    width:50%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 20px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.registrationFormBlockNameError{
+    height:30px;
+    width:50%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 20px;
+    line-height: 18px;
+    color:#e21a1a;
+}
+.registrationFormBlockNameUsername{
+    height:50px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.registrationFormBlockBlock{
+    height:100px;
+    width:100%;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    align-items: center;
+}
+.registrationFormBlockButton{
+    width: 90%;
+    height:30px;
+    background-color: #ffffff;
+    font-size: 20px;
+    line-height: 18px;
+    color:#e21a1a;
+    margin-left:-30%;
+}
+.registrationFormBlockButton:hover{
+    background-color: #e21a1a;
+    color:#ffffff;
+}
+.routeForm{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    height:800px;
+    width:100%;
+}
+.routeFormBlock{
+    min-height: 20vh;
+    width:50%;
+    background-color:#ffffff;
+}
+.routeFormBlockName{
+    height:50px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 30px;
+    line-height: 18px;
+    color:#e21a1a;
+}
+.routeFormBlockArrivals{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    align-items: center;
+}
+.routeFormBlockNameArrival{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 20px;
+    line-height: 28px;
+    color:#1f1f24;
+}
+.routeFormBlockLink{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    height:50px;
+    background-color: #ffffff;
+    font-size: 20px;
+    line-height: 18px;
+    color:#e21a1a;
+}
+.routeFormBlockLinkText{
+    height:30px;
+    width:100%;
+    font-size: 20px;
+    line-height: 18px;
+    color:#1f1f24;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    text-decoration:none;
+}
+.routeFormBlockLinkText:hover{
+    color:#e21a1a;
+}
+table{
+	border: 1px solid #eee;
+	table-layout: fixed;
+	width: 70%;
+	margin-left:15%;
+	margin-bottom: 20px;
+}
+table th {
+	font-weight: bold;
+	padding: 5px;
+	background: #efefef;
+	border: 1px solid #dddddd;
+	word-break: break-all;
+}
+table td{
+	padding: 5px 10px;
+	border: 1px solid #eee;
+	text-align: center;
+	word-break: break-all;
+}
+table tbody tr:nth-child(odd){
+	background: #fff;
+}
+table tbody tr:nth-child(even){
+	background: #F7F7F7;
+}
+.tableButton {
+    background-color: #ffffff;
+    color: #1f1f24;
+    border: 2px solid #1f1f24;
+}
+
+.tableButton:hover {
+    background-color: #f44336;
+    color: #ffffff;
+}
+.routeFormBlockName{
+    height:50px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 30px;
+    line-height: 18px;
+    color:#e21a1a;
+}
+.tableBlockLink{
+    height:50px;
+    width:70%;
+    margin-left:15%;
+    display:flex;
+    justify-content:left;
+    align-items: center;
+}
+.tableBlockLinkA{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 24px;
+    line-height: 18px;
+    color:#1f1f24;
+    text-decoration:none;
+}
+.tableBlockLinkA:hover{
+    color:#e21a1a;
+}
+.tableBlockLinks{
+    display:flex;
+    justify-content:space-around;
+    align-items: center;
+    width:70%;
+    margin-left:15%;
+    height:300px;
+}
+.settingForm{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    height:1000px;
+    width:100%;
+}
+.settingFormBlock{
+    min-height: 20vh;
+    width:30%;
+    background-color:#ffffff;
+}
+.settingFormBlockName{
+    height:50px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 30px;
+    line-height: 18px;
+    color:#e21a1a;
+}
+.settingFormBlockArrivals{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    align-items: center;
+}
+.settingFormBlockNameArrival{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 20px;
+    line-height: 28px;
+    color:#1f1f24;
+}
+.settingFormBlockLink{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    height:50px;
+    background-color: #ffffff;
+    font-size: 20px;
+    line-height: 18px;
+    color:#e21a1a;
+}
+.settingFormBlockLinkText{
+    height:30px;
+    width:100%;
+    font-size: 20px;
+    line-height: 18px;
+    color:#1f1f24;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    text-decoration:none;
+}
+.settingFormBlockLinkText:hover{
+    color:#e21a1a;
+}
+.settingFormBlockButton{
+    width: 30%;
+    height:30px;
+    background-color: #ffffff;
+    font-size: 20px;
+    line-height: 18px;
+    color:#e21a1a;
+    justify-content:center;
+    align-items: center;
+    display:flex;
+}
+.settingFormBlockButton:hover{
+    background-color: #e21a1a;
+    color:#ffffff;
+}
+.settingFormBlockB{
+    width:100%;
+    justify-content:center;
+    align-items: center;
+    display:flex;
+    height:50px;
+}
+.settingFormBlockInput{
+    margin-top:10px;
+    height:30px;
+    width:70%;
+    font-size: 20px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.billetBlockWindowDateTextField{
+    margin-left:3%;
+}
+.scheduleBlocks{
+    margin-left:15%;
+    width:70%;
+    min-height: 10vh;
+}
+.scheduleBlock{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    width:100%;
+    height:75px;
+    background-color:#ffffff;
+    margin-top:25px;
+}
+.scheduleBlockFieldTrain{
+    width:16.6%;
+    height:75px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 24px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.scheduleBlockFieldHTrain{
+    width:16.6%;
+    height:75px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 24px;
+    line-height: 18px;
+    color:#1f1f24;
+    font-weight:800;
+}
+.scheduleBlockButtonTrain{
+    width:16.6%;
+    height:75px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.scheduleBlockButtonTrainSubmit{
+    background-color: #ffffff;
+    color: #1f1f24;
+    border: 2px solid #ffffff;
+    width:100%;
+    height:75px;
+    font-size: 24px;
+    line-height: 18px;
+}
+
+.scheduleBlockButtonTrainSubmit:hover {
+    background-color: #f44336;
+    border: 2px solid #f44336;
+    color: #ffffff;
+}
+.scheduleBlocksArrival{
+    margin-left:25%;
+    width:50%;
+    min-height: 5vh;
+}
+.scheduleBlockArrival{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    width:100%;
+    height:75px;
+    background-color:#ffffff;
+}
+.scheduleBlockFieldTitleArrival{
+    width:25%;
+    height:75px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 24px;
+    line-height: 18px;
+    color:#767676;
+}
+.scheduleBlockFieldArrival{
+    width:25%;
+    height:75px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 24px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.scheduleHeaderArrival{
+    background-color:#ffffff;
+    width:100%;
+    height:75px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 30px;
+    line-height: 18px;
+    color:#e21a1a;
+}
+.scheduleLinkArrival{
+    background-color:#ffffff;
+    width:100%;
+    height:75px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 24px;
+    line-height: 18px;
+    color:#1f1f24;
+    text-decoration:none;
+}
+.scheduleLinkArrival:hover{
+    color:#e21a1a;
+}
+.scheduleBlockFieldTerminal{
+    width:20%;
+    height:75px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 24px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.scheduleBlockFieldHTerminal{
+    width:20%;
+    height:75px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 24px;
+    line-height: 18px;
+    color:#1f1f24;
+    font-weight:800;
+}
+.scheduleBlockButtonTerminal{
+    width:20%;
+    height:75px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.scheduleBlockButtonTerminalSubmit{
+    background-color: #ffffff;
+    color: #1f1f24;
+    border: 2px solid #ffffff;
+    width:100%;
+    height:75px;
+    font-size: 24px;
+    line-height: 18px;
+}
+
+.scheduleBlockButtonTerminalSubmit:hover {
+    background-color: #f44336;
+    border: 2px solid #f44336;
+    color: #ffffff;
+}
+.indexTable{
+    width:100%;
+    min-height: 58.7vh;
+}
+.settingFormBlockView{
+    height:50px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.settingFormBlockViewText{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 20px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.indexTableBlocks{
+    width:70%;
+    margin-left:15%;
+    min-height: 20vh;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    align-items: left;
+}
+.indexTableBlocksElem{
+    width:26%;
+    height: 200px;
+    margin-top:50px;
+    background-color:#ffffff;
+}
+.indexTableBlocksElemHeader{
+    height:100px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 30px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.indexTableBlocksElemDown{
+    height:100px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.indexTableBlocksElemDownText{
+    height:50px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 12px;
+    line-height: 18px;
+    color:#767D89;
+}
+.indexTableBlocksElemDownBut{
+    height:50px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.indexTableBlocksElemDownButton{
+    height:30px;
+    width:50%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 20px;
+    line-height: 18px;
+    color:#e21a1a;
+    background-color:#ffffff;
+}
+.indexTableBlocksElemDownButton:hover{
+    color:#ffffff;
+    background-color:#e21a1a;
+}
+.accountForm{
+    min-height: 20vh;
+    width:70%;
+    margin-left:15%;
+    display:flex;
+    justify-content:space-around;
+    align-items: start;
+}
+.accountFormPanel{
+    width: 25%;
+    height:150px;
+    background-color:#ffffff;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.accountFormData{
+    width:60%;
+    min-height: 10vh;
+    background-color:#ffffff;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.accountFormPanelHeader{
+    height:50px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 24px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.accountFormPanelText{
+    height:50px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.accountFormDataText{
+    height:50px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.accountFormPanelTextLink{
+    font-size: 20px;
+    line-height: 18px;
+    color:#1f1f24;
+    text-decoration:none;
+}
+.accountFormPanelTextLink:hover{
+    color:#e21a1a;
+}
+.accountFormDataTextElem{
+    height:50px;
+    width:20%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 20px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.accountFormDataTextMsg{
+    height:50px;
+    width:40%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 20px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.accountFormDataTextElemH{
+    height:50px;
+    width:20%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 20px;
+    line-height: 18px;
+    color:#767676;
+}
+.accountFormDataTextMsgH{
+    min-height: 3vh;
+    width:40%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 20px;
+    line-height: 18px;
+    color:#767676;
+    word-break: break-all;
+}
+.accountFormDataTextBut{
+     height:50px;
+     width:50%;
+     display:flex;
+     justify-content:center;
+     align-items: center;
+     font-size: 20px;
+     line-height: 18px;
+     color:#e21a1a;
+     background-color:#ffffff;
+}
+.accountFormDataTextButton{
+    height:50px;
+    width:20%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.accountFormDataTextButton:hover{
+    color:#ffffff;
+    background-color:#e21a1a;
+}
+.buyBlockVan{
+    width:100%;
+    height: 200px;
+    background-color:#ffffff;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.buyBlockVanImg1{
+    width:900px;
+    height:144px;
+    background-image: url(/img/vanCompartmentType1.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    display:flex;
+    justify-content:center;
+    align-items: flex-start;
+}
+.buyBlockVanImg2{
+    width:900px;
+    height:144px;
+    background-image: url(/img/vanCompartmentType2.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    display:flex;
+    justify-content:center;
+    align-items: flex-start;
+}
+.buyBlockVanImg3{
+    width:900px;
+    height:144px;
+    background-image: url(/img/vanCompartmentType1.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    display:flex;
+    justify-content:center;
+    align-items: flex-start;
+}
+.buyBlockVanImg4{
+    width:900px;
+    height:144px;
+    background-image: url(/img/vanCompartmentType3.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    display:flex;
+    justify-content:center;
+    align-items: flex-start;
+}
+.buyBlockVanImg5{
+    width:900px;
+    height:144px;
+    background-image: url(/img/vanCompartmentType4.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    display:flex;
+    justify-content:center;
+    align-items: flex-start;
+}
+.compartmentBlocks1{
+    width:71px;
+    height:80px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.freeCompartmentBlockLeft1{
+    width:188px;
+    height:80px;
+}
+.freeCompartmentBlockRight1{
+    width:90px;
+    height:80px;
+}
+.compartmentPlaceBlocks1{
+    width:100%;
+    height:40px;
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+}
+.compartmentPlaceBlocksButton1{
+    width:24px;
+    height:40px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 12px;
+    line-height: 18px;
+    color:#e21a1a;
+    background-color:#ffffff;
+}
+.compartmentPlaceBlocksButton1:hover{
+    color:#ffffff;
+    background-color:#e21a1a;
+}
+.compartmentPlaceBlocksButtonEngaged1{
+    width:24px;
+    height:40px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 12px;
+    line-height: 18px;
+    color:#ffffff;
+    background-color:#e21a1a;
+}
+.compartmentPlaceBlocks2{
+    width:100%;
+    height:80px;
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+}
+.compartmentPlaceBlocksButton2{
+    width:24px;
+    height:80px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 12px;
+    line-height: 18px;
+    color:#e21a1a;
+    background-color:#ffffff;
+}
+.compartmentPlaceBlocksButton2:hover{
+    color:#ffffff;
+    background-color:#e21a1a;
+}
+.compartmentPlaceBlocksButtonEngaged2{
+    width:24px;
+    height:80px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 12px;
+    line-height: 18px;
+    color:#ffffff;
+    background-color:#e21a1a;
+}
+.compartmentPlaceBlocks3{
+    width:100%;
+    height:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+}
+.compartmentPlaceBlocksButton3{
+    width:35px;
+    height:20px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 12px;
+    line-height: 18px;
+    color:#e21a1a;
+    background-color:#ffffff;
+}
+.compartmentPlaceBlocksButton3:hover{
+    color:#ffffff;
+    background-color:#e21a1a;
+}
+.compartmentPlaceBlocksButtonEngaged3{
+    width:35px;
+    height:20px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 12px;
+    line-height: 18px;
+    color:#ffffff;
+    background-color:#e21a1a;
+}
+.freeCompartmentBlockLeft4{
+    width:240px;
+    height:53px;
+}
+.freeCompartmentBlockRight4{
+    width:240px;
+    height:53px;
+}
+.compartmentBlocks4{
+    width:420px;
+    height:144px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.compartmentPlaceBlocksButton4{
+    width:25px;
+    height:20px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 12px;
+    line-height: 18px;
+    color:#e21a1a;
+    background-color:#ffffff;
+}
+.compartmentPlaceBlocksButton4:hover{
+    color:#ffffff;
+    background-color:#e21a1a;
+}
+.compartmentPlaceBlocksButtonEngaged4{
+    width:25px;
+    height:20px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 12px;
+    line-height: 18px;
+    color:#ffffff;
+    background-color:#e21a1a;
+}
+.freePlaceBlocks4{
+    width:17px;
+    height:20px;
+}
+.compartmentPlaceBlocks4{
+    width:33px;
+    height:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+}
+.compartmentPlaceBlocks5{
+    width:31px;
+    height:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+}
+.buyHeader{
+    background-color:#ffffff;
+    width:100%;
+    height:75px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 24px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.buyInfoFrom{
+    width:100%;
+    height:300px;
+    background-color:#ffffff;
+}
+.buyTextInput{
+    background-color:#ffffff;
+    width:100%;
+    height:50px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 24px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.loginFormBlockDownLinkReg:hover{
+    color:#e21a1a;
+}
+.buyCreditCardFrom{
+    width:100%;
+    height:450px;
+    background-color:#ffffff;
+}
+.buyCreditCardBlock1{
+    width:33%;
+    height:50px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.buyCreditCardBlock2{
+    width:25%;
+    height:50px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.buyCreditCardBlockText{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 20px;
+    line-height: 18px;
+    color:#1f1f24;
+}
+.imgBarcode{
+    height: 50px;
+    width:200px;
+}
+.blocksOrder{
+    margin-left:25%;
+    width:50%;
+    height: 400px;
+}
+.buyOrderFrom{
+    width:100%;
+    height:375px;
+    background-color:#ffffff;
+}
+.orderDeleteFrom{
+    width:100%;
+    height:275px;
+    background-color:#ffffff;
+}
+.loginFormBlockTextError{
+    height:50px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 20px;
+    line-height: 18px;
+    color:#e21a1a;
+}

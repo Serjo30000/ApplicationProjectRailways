@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thyneleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>Просмотр билета</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="header">
+  <div class="headerBlock">
+    <div class="logo">
+      <a href="/"><img class="logoImg" th:src="@{/img/logotype.png}" alt="Logotype" /></a>
+    </div>
+    <div class="spaceLogo">
+      <div class="spaceLogoName">
+        <a class="spaceLogoNameLink" href="/companyPanel/companyTicket">
+          Билеты
+        </a>
+      </div>
+      <div class="spaceLogoName">
+        <a class="spaceLogoNameLink" href="/companyPanel/companyTrain">
+          Поезда
+        </a>
+      </div>
+      <div  class="spaceLogoName">
+        <a class="spaceLogoNameLink" href="/companyPanel/companyTerminal">
+          Вокзалы
+        </a>
+      </div>
+    </div>
+    <div class="logoName" sec:authorize="isAuthenticated()">
+      <a class="logoNameLogin" href="/account" sec:authentication="name">
+      </a>
+      <div class="logoNameExit">
+        <div class="logoNameExitColor">
+          <a class="logoNameExitLink" href="/logout">Выйти</a>
+        </div>
+      </div>
+    </div>
+    <div class="logoName" sec:authorize="!isAuthenticated()">
+      <a class="logoNameLogin" href="/" >
+        Логин
+      </a>
+      <div class="logoNameExit">
+        <div class="logoNameExitColor">
+          <a class="logoNameExitLink" href="/login">Войти</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="settingForm">
+  <div class="settingFormBlock" th:object="${ticketForm}">
+    <div class="settingFormBlockName">Билет</div>
+    <div class="settingFormBlockView">
+      <div class="settingFormBlockViewText">Номер:&nbsp;</div>
+      <div class="settingFormBlockViewText" th:text="*{id}"></div>
+    </div>
+    <div class="settingFormBlockView">
+      <div class="settingFormBlockViewText">Номер поезда:&nbsp;</div>
+      <div class="settingFormBlockViewText" th:text="*{trainId}"></div>
+    </div>
+    <div class="settingFormBlockView">
+      <div class="settingFormBlockViewText">Использование:&nbsp;</div>
+      <div class="settingFormBlockViewText" th:if="${ticketServ.allArrivals(ticketForm.id)==null || ticketServ.allArrivals(ticketForm.id).size()<=0 || ticketServ.allArrivals(ticketForm.id).size()>0 && ticketServ.allArrivals(ticketForm.id).get(ticketServ.allArrivals(ticketForm.id).size()-1).getDate().before(todayData)}" th:text="Просрочен"></div>
+      <div class="settingFormBlockViewText" th:if="${ticketServ.allArrivals(ticketForm.id)!=null && ticketServ.allArrivals(ticketForm.id).size()>0 && ticketServ.allArrivals(ticketForm.id).get(ticketServ.allArrivals(ticketForm.id).size()-1).getDate().after(todayData)}" th:text="Используется"></div>
+
+    </div>
+    <div class="settingFormBlockView">
+      <div class="settingFormBlockViewText">Кол-во мест:&nbsp;</div>
+      <div class="settingFormBlockViewText" th:text="${trainServ.countPlaceTrainAll(ticketForm.trainId)}"></div>
+    </div>
+    <div class="settingFormBlockView">
+      <div class="settingFormBlockViewText">Занято мест:&nbsp;</div>
+      <div class="settingFormBlockViewText" th:text="${trainServ.countPlaceTrainAll(ticketForm.trainId)-trainServ.countPlaceTrain(ticketForm.trainId)}"></div>
+    </div>
+    <div class="settingFormBlockView">
+      <div class="settingFormBlockViewText">Средняя цена:&nbsp;</div>
+      <div class="settingFormBlockViewText" th:text="${trainServ.averagePricePlace(ticketForm.trainId)}"></div>
+    </div>
+    <div class="settingFormBlockLink">
+      <a class="settingFormBlockLinkText" th:href="@{/companyPanel/companyTicket}">Вернуться</a>
+    </div>
+  </div>
+</div>
+<div class="free">
+
+</div>
+<div class="basement">
+  <div class="basementBlock">
+    <div class="basementBlockLeft">
+      <div class="basementBlockLeftName">
+        О сайте
+      </div>
+      <div class="basementBlockLeftText">
+        Сайт создан для проекта по теме "РЖД", по предмету Современные технологии объектно-ориентированного программирования.
+      </div>
+    </div>
+    <div class="basementBlockRight">
+      <div class="basementBlockRightName">
+        Ссылки
+      </div>
+      <div class="basementBlockRightLink">
+        <a href="https://www.rzd.ru/ru/9269"><img alt="logo VK" class="basementBlockRightLinkImg" th:src="@{/img/logotype.png}"></a>
+        <a href="https://vk.com/id310386679"><img alt="logo RR" class="basementBlockRightLinkImg" th:src="@{/img/vk.png}"></a>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thyneleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>Просмотр моего билета</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="header">
+  <div class="headerBlock">
+    <div class="logo">
+      <a href="/"><img class="logoImg" th:src="@{/img/logotype.png}" alt="Logotype" /></a>
+    </div>
+    <div class="spaceLogo">
+      <div class="spaceLogoName">
+        <a class="spaceLogoNameLink" href="/mainClient/myTicket">
+          Мои билеты
+        </a>
+      </div>
+      <div class="spaceLogoName">
+        <a class="spaceLogoNameLink" href="/mainClient/scheduleTrain">
+          Поезда и маршруты
+        </a>
+      </div>
+      <div  class="spaceLogoName">
+        <a class="spaceLogoNameLink" href="/mainClient/scheduleTerminal">
+          Вокзалы
+        </a>
+      </div>
+    </div>
+    <div class="logoName" sec:authorize="isAuthenticated()">
+      <a class="logoNameLogin" href="/account" sec:authentication="name">
+      </a>
+      <div class="logoNameExit">
+        <div class="logoNameExitColor">
+          <a class="logoNameExitLink" href="/logout">Выйти</a>
+        </div>
+      </div>
+    </div>
+    <div class="logoName" sec:authorize="!isAuthenticated()">
+      <a class="logoNameLogin" href="/" >
+        Логин
+      </a>
+      <div class="logoNameExit">
+        <div class="logoNameExitColor">
+          <a class="logoNameExitLink" href="/login">Войти</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="free">
+
+</div>
+<div  class="tableBlock">
+  <div class="blocksOrder" >
+    <div class="scheduleHeaderArrival">Электронный билет</div>
+    <div class="buyOrderFrom" th:object="${orderForm}">
+      <div class="loginFormBlockCompany">
+        <div class="buyCreditCardBlock1">
+          <div class="buyCreditCardBlockText">
+            Тип поезда:&#160;
+          </div>
+          <div class="buyCreditCardBlockText" th:text="${typeTrain}">
+
+          </div>
+        </div>
+        <div class="buyCreditCardBlock1">
+          <div class="buyCreditCardBlockText">
+            Название поезда:&#160;
+          </div>
+          <div class="buyCreditCardBlockText" th:text="${nameTrain}">
+
+          </div>
+        </div>
+        <div class="buyCreditCardBlock1">
+          <div class="buyCreditCardBlockText">
+
+          </div>
+          <div class="buyCreditCardBlockText" >
+<!--            <img alt="logo VK" class="imgBarcode" th:src="@{${linkBarcode}}">-->
+            <img th:src="@{'/uploads' + ${linkBarcode}}"/>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="loginFormBlockCompany">
+        <div class="buyCreditCardBlock2">
+          <div class="buyCreditCardBlockText">
+            Тип вагона:&#160;
+          </div>
+          <div class="buyCreditCardBlockText" th:text="${typeVan}">
+
+          </div>
+        </div>
+        <div class="buyCreditCardBlock2">
+          <div class="buyCreditCardBlockText">
+            Тип отдела:&#160;
+          </div>
+          <div class="buyCreditCardBlockText" th:text="${typeCompartment}">
+
+          </div>
+        </div>
+        <div class="buyCreditCardBlock2">
+          <div class="buyCreditCardBlockText">
+            Место:&#160;
+          </div>
+          <div class="buyCreditCardBlockText" th:text="${numberPlace}">
+
+          </div>
+        </div>
+        <div class="buyCreditCardBlock2">
+          <div class="buyCreditCardBlockText">
+            Цена:&#160;
+          </div>
+          <div class="buyCreditCardBlockText" th:text="${price}">
+
+          </div>
+        </div>
+      </div>
+      <div class="loginFormBlockCompany">
+        <div class="buyCreditCardBlock2">
+          <div class="buyCreditCardBlockText">
+            Вокзал:&#160;
+          </div>
+          <div class="buyCreditCardBlockText" th:text="${nameTerminal}">
+
+          </div>
+        </div>
+        <div class="buyCreditCardBlock2">
+          <div class="buyCreditCardBlockText">
+            Город:&#160;
+          </div>
+          <div class="buyCreditCardBlockText" th:text="${nameTown}">
+
+          </div>
+        </div>
+        <div class="buyCreditCardBlock2">
+          <div class="buyCreditCardBlockText">
+            Страна:&#160;
+          </div>
+          <div class="buyCreditCardBlockText" th:text="${nameCountry}">
+
+          </div>
+        </div>
+        <div class="buyCreditCardBlock2">
+          <div class="buyCreditCardBlockText">
+            Дата:&#160;
+          </div>
+          <div class="buyCreditCardBlockText" th:text="${dateArrival}">
+
+          </div>
+        </div>
+      </div>
+      <div class="loginFormBlockCompany">
+        <div class="buyCreditCardBlock2">
+          <div class="buyCreditCardBlockText">
+            Имя:&#160;
+          </div>
+          <div class="buyCreditCardBlockText" th:text="${orderForm.nameUser}">
+
+          </div>
+        </div>
+        <div class="buyCreditCardBlock2">
+          <div class="buyCreditCardBlockText">
+            Фамилия:&#160;
+          </div>
+          <div class="buyCreditCardBlockText" th:text="${orderForm.surnameUser}">
+
+          </div>
+        </div>
+        <div class="buyCreditCardBlock2">
+          <div class="buyCreditCardBlockText">
+            Отчество:&#160;
+          </div>
+          <div class="buyCreditCardBlockText" th:text="${orderForm.patronymicUser}">
+
+          </div>
+        </div>
+        <div class="buyCreditCardBlock2">
+          <div class="buyCreditCardBlockText">
+            Дата рождения:&#160;
+          </div>
+          <div class="buyCreditCardBlockText" th:text="${orderForm.getBirthdayUser()}">
+
+          </div>
+        </div>
+      </div>
+      <div class="loginFormBlockCompany">
+        <div class="buyCreditCardBlockText">
+          Расспечатайте билет или предоставте его проводнику поезда, показав штрихкод билета.
+        </div>
+      </div>
+
+      <hr>
+      <div class="loginFormBlockDown">
+        <div class="loginFormBlockDownLinks">
+          <a class="loginFormBlockDownLinkReg" th:href="@{/mainClient/myTicket}">Вернуться</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="free">
+
+</div>
+<div class="basement">
+  <div class="basementBlock">
+    <div class="basementBlockLeft">
+      <div class="basementBlockLeftName">
+        О сайте
+      </div>
+      <div class="basementBlockLeftText">
+        Сайт создан для проекта по теме "РЖД", по предмету Современные технологии объектно-ориентированного программирования.
+      </div>
+    </div>
+    <div class="basementBlockRight">
+      <div class="basementBlockRightName">
+        Ссылки
+      </div>
+      <div class="basementBlockRightLink">
+        <a href="https://www.rzd.ru/ru/9269"><img alt="logo VK" class="basementBlockRightLinkImg" th:src="@{/img/logotype.png}"></a>
+        <a href="https://vk.com/id310386679"><img alt="logo RR" class="basementBlockRightLinkImg" th:src="@{/img/vk.png}"></a>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thyneleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>Отделы</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="header">
+  <div class="headerBlock">
+    <div class="logo">
+      <a href="/"><img class="logoImg" th:src="@{/img/logotype.png}" alt="Logotype" /></a>
+    </div>
+    <div class="spaceLogo">
+      <div class="spaceLogoName">
+        <a class="spaceLogoNameLink" href="/companyPanel/companyTicket">
+          Билеты
+        </a>
+      </div>
+      <div class="spaceLogoName">
+        <a class="spaceLogoNameLink" href="/companyPanel/companyTrain">
+          Поезда
+        </a>
+      </div>
+      <div  class="spaceLogoName">
+        <a class="spaceLogoNameLink" href="/companyPanel/companyTerminal">
+          Вокзалы
+        </a>
+      </div>
+    </div>
+    <div class="logoName" sec:authorize="isAuthenticated()">
+      <a class="logoNameLogin" href="/account" sec:authentication="name">
+      </a>
+      <div class="logoNameExit">
+        <div class="logoNameExitColor">
+          <a class="logoNameExitLink" href="/logout">Выйти</a>
+        </div>
+      </div>
+    </div>
+    <div class="logoName" sec:authorize="!isAuthenticated()">
+      <a class="logoNameLogin" href="/" >
+        Логин
+      </a>
+      <div class="logoNameExit">
+        <div class="logoNameExitColor">
+          <a class="logoNameExitLink" href="/login">Войти</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="routeFormBlockName">
+  Редактирование Отделов
+</div>
+<div class="sort">
+  <div class="sortBlocks">
+    <form class="sortBlock" th:action="@{/companyPanel/companyCompartment}" method="post">
+      <div class="sortBlockChoice1">
+        <tr th:each="compartment,i : ${allCompartments}">
+          <input type="hidden" name="vanId" th:value="${undoListCreate}"/>
+          <td><input name="lstComp" th:value="${compartment.getId()}" type="hidden"></td>
+        </tr>
+        <select name="sortName" class="sortBlockChoice1Select" size="1" required>
+          <option selected value="Отсутствует">Отсутствует</option>
+          <option value="По цене">По цене</option>
+          <option value="По кол-ву мест">По кол-ву мест</option>
+          <option value="По типу">По типу</option>
+        </select>
+      </div>
+      <div class="sortBlockChoice2">
+        <select name="sortBy" class="sortBlockChoice2Select" size="1" required>
+          <option selected value="По возрастанию">По возрастанию</option>
+          <option value="По убыванию">По убыванию</option>
+        </select>
+      </div>
+      <div th:if="${allCompartments.size()>0}" class="sortBlockButton">
+        <button class="sortBlockButtonSubmit" type="submit">Применить</button>
+      </div>
+      <div th:if="${allCompartments.size()<=0}" class="sortBlockButton">
+        <button class="sortBlockButtonSubmit" type="button">Применить</button>
+      </div>
+    </form>
+    <form class="sortBlockReset" th:action="@{/companyPanel/companyCompartment}" method="post">
+      <div class="sortBlockButtonReset">
+        <input type="hidden" name="vanId" th:value="${undoListCreate}"/>
+        <button class="sortBlockButtonSubmit" type="submit">Сбросить</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div  class="tableBlock">
+  <div class="scheduleBlocks" >
+    <div class="scheduleBlock">
+      <div class="scheduleBlockFieldHTerminal">Номер</div>
+      <div class="scheduleBlockFieldHTerminal">Тип</div>
+      <div class="scheduleBlockFieldHTerminal">Номер вагона</div>
+      <div class="scheduleBlockFieldHTerminal">Кол-во мест</div>
+      <div class="scheduleBlockFieldHTerminal">Средняя цена</div>
+      <div class="scheduleBlockFieldHTerminal">Посмотреть</div>
+      <div class="scheduleBlockFieldHTerminal">Места</div>
+    </div>
+    <div class="scheduleBlock" data-th-each="compartment : ${allCompartments}">
+      <div class="scheduleBlockFieldTerminal" th:text="${compartment.id}"></div>
+      <div class="scheduleBlockFieldTerminal" th:text="${compartment.typeCompartment}"></div>
+      <div class="scheduleBlockFieldTerminal" th:text="${compartment.vanId}"></div>
+      <div class="scheduleBlockFieldTerminal" th:text="${compartmentServ.countPlaceCompartment(compartment.id)}"></div>
+      <div class="scheduleBlockFieldTerminal" th:text="${compartmentServ.averagePricePlaceCompartment(compartment.id)}"></div>
+      <form class="scheduleBlockButtonTerminal" th:action="@{/companyPanel/companyCompartment/viewCompanyCompartment}" method="get">
+        <input type="hidden" name="compartmentId" th:value="${compartment.id}"/>
+        <button class="scheduleBlockButtonTerminalSubmit" type="submit">Посмотреть</button>
+      </form>
+      <form class="scheduleBlockButtonTerminal" th:action="@{/companyPanel/companyPlace}" method="get">
+        <input type="hidden" name="compartmentId" th:value="${compartment.id}"/>
+        <button class="scheduleBlockButtonTerminalSubmit" type="submit">Места</button>
+      </form>
+    </div>
+  </div>
+  <div class="tableBlockLink">
+    <a class="tableBlockLinkA" th:href="@{/companyPanel/companyVan(trainId=${undoLink})}">Вернуться</a>
+  </div>
+</div>
+<div class="free">
+
+</div>
+<div class="basement">
+  <div class="basementBlock">
+    <div class="basementBlockLeft">
+      <div class="basementBlockLeftName">
+        О сайте
+      </div>
+      <div class="basementBlockLeftText">
+        Сайт создан для проекта по теме "РЖД", по предмету Современные технологии объектно-ориентированного программирования.
+      </div>
+    </div>
+    <div class="basementBlockRight">
+      <div class="basementBlockRightName">
+        Ссылки
+      </div>
+      <div class="basementBlockRightLink">
+        <a href="https://www.rzd.ru/ru/9269"><img alt="logo VK" class="basementBlockRightLinkImg" th:src="@{/img/logotype.png}"></a>
+        <a href="https://vk.com/id310386679"><img alt="logo RR" class="basementBlockRightLinkImg" th:src="@{/img/vk.png}"></a>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thyneleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Аккаунт, личные данные</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="header">
+    <div class="headerBlock">
+        <div class="logo">
+            <a href="/"><img class="logoImg" th:src="@{/img/logotype.png}" alt="Logotype" /></a>
+        </div>
+        <div class="spaceLogo">
+
+        </div>
+        <div class="logoName" sec:authorize="isAuthenticated()">
+            <a class="logoNameLogin" href="/account" sec:authentication="name">
+            </a>
+            <div class="logoNameExit">
+                <div class="logoNameExitColor">
+                    <a class="logoNameExitLink" href="/logout">Выйти</a>
+                </div>
+            </div>
+        </div>
+        <div class="logoName" sec:authorize="!isAuthenticated()">
+            <a class="logoNameLogin" href="/" >
+                Логин
+            </a>
+            <div class="logoNameExit">
+                <div class="logoNameExitColor">
+                    <a class="logoNameExitLink" href="/login">Войти</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="free">
+
+</div>
+<div  class="indexTable">
+    <div class="accountForm">
+        <div class="accountFormPanel">
+            <div class="accountFormPanelHeader">
+                Мой профиль
+            </div>
+            <div class="accountFormPanelText">
+                <a class="accountFormPanelTextLink" href="/account">Мои данные</a>
+            </div>
+            <div class="accountFormPanelText">
+                <a class="accountFormPanelTextLink" href="/accountNotification">Уведомления</a>
+            </div>
+        </div>
+        <div class="accountFormData">
+            <div class="loginFormBlockName">
+                Мои данные
+            </div>
+            <div class="accountFormDataText">
+                <div class="settingFormBlockArrivals">
+                    <input readonly placeholder="Логин" class="settingFormBlockInput" type="text" th:value="${userServ.loadUserByUsername(#authentication.getPrincipal().getUsername()).getUsername()}" />
+                </div>
+                <div class="settingFormBlockArrivals">
+                    <input readonly placeholder="Пароль" class="settingFormBlockInput" type="text" th:value="${userServ.loadUserByUsername(#authentication.getPrincipal().getUsername()).getPassword()}"/>
+                </div>
+            </div>
+            <div class="accountFormDataText">
+                <div class="settingFormBlockArrivals">
+                    <input readonly placeholder="Почта" class="settingFormBlockInput" type="text" th:value="${userServ.loadUserByUsername(#authentication.getPrincipal().getUsername()).getEmail()}"/>
+                </div>
+                <div class="settingFormBlockArrivals">
+                    <input readonly placeholder="Телефон" class="settingFormBlockInput" type="text" th:value="${userServ.loadUserByUsername(#authentication.getPrincipal().getUsername()).getPhone()}"/>
+                </div>
+            </div>
+            <div class="accountFormDataText">
+                <div class="settingFormBlockArrivals">
+                    <input readonly placeholder="Учредитель" class="settingFormBlockInput" type="text" th:value="${userServ.loadUserByUsername(#authentication.getPrincipal().getUsername()).getFounder()}"/>
+                </div>
+                <div class="settingFormBlockArrivals">
+                    <input readonly placeholder="Рег. номер" class="settingFormBlockInput" type="number" th:value="${userServ.loadUserByUsername(#authentication.getPrincipal().getUsername()).getRegNumber()}"/>
+                </div>
+            </div>
+            <div class="accountFormDataText">
+                <div class="settingFormBlockArrivals">
+                    <input readonly placeholder="Местоположение" class="settingFormBlockInput" type="text" th:value="${userServ.loadUserByUsername(#authentication.getPrincipal().getUsername()).getLocation()}"/>
+                </div>
+                <div class="settingFormBlockArrivals">
+                    <input readonly placeholder="Роль" class="settingFormBlockInput" type="text" th:value="${userServ.loadUserByUsername(#authentication.getPrincipal().getUsername()).getRoles().iterator().next().getName()}"/>
+                </div>
+            </div>
+            <div class="accountFormDataText">
+                <a class="settingFormBlockLinkText" href="/">Главная</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="free">
+
+</div>
+<div class="basement">
+    <div class="basementBlock">
+        <div class="basementBlockLeft">
+            <div class="basementBlockLeftName">
+                О сайте
+            </div>
+            <div class="basementBlockLeftText">
+                Сайт создан для проекта по теме "РЖД", по предмету Современные технологии объектно-ориентированного программирования.
+            </div>
+        </div>
+        <div class="basementBlockRight">
+            <div class="basementBlockRightName">
+                Ссылки
+            </div>
+            <div class="basementBlockRightLink">
+                <a href="https://www.rzd.ru/ru/9269"><img alt="logo VK" class="basementBlockRightLinkImg" th:src="@{/img/logotype.png}"></a>
+                <a href="https://vk.com/id310386679"><img alt="logo RR" class="basementBlockRightLinkImg" th:src="@{/img/vk.png}"></a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thyneleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Вагоны</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="header">
+    <div class="headerBlock">
+        <div class="logo">
+            <a href="/"><img class="logoImg" th:src="@{/img/logotype.png}" alt="Logotype" /></a>
+        </div>
+        <div class="spaceLogo">
+            <div class="spaceLogoNameAdmin">
+                <a href="/adminPanel/adminUser" class="spaceLogoNameLinkAdmin">Пользователи</a>
+            </div>
+            <div class="spaceLogoNameAdmin">
+                <a href="/adminPanel/adminTrain" class="spaceLogoNameLinkAdmin">Поезда</a>
+            </div>
+            <div class="spaceLogoNameAdmin">
+                <a href="/adminPanel/adminTicket" class="spaceLogoNameLinkAdmin">Билеты</a>
+            </div>
+            <div class="spaceLogoNameAdmin">
+                <a href="/adminPanel/adminCountry" class="spaceLogoNameLinkAdmin">Страны</a>
+            </div>
+        </div>
+        <div class="logoName" sec:authorize="isAuthenticated()">
+            <a class="logoNameLogin" href="/account" sec:authentication="name">
+            </a>
+            <div class="logoNameExit">
+                <div class="logoNameExitColor">
+                    <a class="logoNameExitLink" href="/logout">Выйти</a>
+                </div>
+            </div>
+        </div>
+        <div class="logoName" sec:authorize="!isAuthenticated()">
+            <a class="logoNameLogin" href="/" >
+                Логин
+            </a>
+            <div class="logoNameExit">
+                <div class="logoNameExitColor">
+                    <a class="logoNameExitLink" href="/login">Войти</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div  class="tableBlock">
+    <div class="routeFormBlockName">
+        Таблица: Вагоны
+    </div>
+<!--<form class="tableBlockLink" th:action="@{/adminPanel/adminVan/createAdminVan}" method="get">-->
+<!--    <input type="hidden" name="undoListCreate" th:value="${undoListCreate}"/>-->
+<!--    <button class="tableButton" type="submit">Create</button>-->
+<!--</form>-->
+<table>
+    <thead>
+    <th>Номер</th>
+    <th>Номер поезда</th>
+    <th>Тип</th>
+<!--    <th>Изменить</th>-->
+    <th>Посмотреть</th>
+    <th>Удалить</th>
+    <th>Отделы</th>
+    </thead>
+    <tr data-th-each="van : ${allVans}">
+        <td data-th-text="${van.id}"></td>
+        <td data-th-text="${van.trainId}"></td>
+        <td data-th-text="${van.typeVan}"></td>
+<!--        <td>-->
+<!--            <form th:action="@{/adminPanel/adminVan/editAdminVan}" method="get">-->
+<!--                <input type="hidden" name="vanId" th:value="${van.id}"/>-->
+<!--                <button class="tableButton" type="submit">Изменить</button>-->
+<!--            </form>-->
+<!--        </td>-->
+        <td>
+            <form th:action="@{/adminPanel/adminVan/viewAdminVan}" method="get">
+                <input type="hidden" name="vanId" th:value="${van.id}"/>
+                <button class="tableButton" type="submit">Посмотреть</button>
+            </form>
+        </td>
+        <td >
+            <form th:action="@{/adminPanel/adminVan}" method="post">
+                <input type="hidden" name="vanId" th:value="${van.id}"/>
+                <input type="hidden" name="action" value="delete"/>
+                <button class="tableButton" type="submit">Удалить</button>
+            </form>
+        </td>
+        <td >
+            <form th:action="@{/adminPanel/adminCompartment}" method="get">
+                <input type="hidden" name="vanId" th:value="${van.id}"/>
+                <button class="tableButton" type="submit">Отделы</button>
+            </form>
+        </td>
+    </tr>
+</table>
+    <div class="tableBlockLink">
+        <a class="tableBlockLinkA" href="/adminPanel/adminTrain">Вернуться</a>
+    </div>
+</div>
+<div class="free">
+
+</div>
+<div class="basement">
+    <div class="basementBlock">
+        <div class="basementBlockLeft">
+            <div class="basementBlockLeftName">
+                О сайте
+            </div>
+            <div class="basementBlockLeftText">
+                Сайт создан для проекта по теме "РЖД", по предмету Современные технологии объектно-ориентированного программирования.
+            </div>
+        </div>
+        <div class="basementBlockRight">
+            <div class="basementBlockRightName">
+                Ссылки
+            </div>
+            <div class="basementBlockRightLink">
+                <a href="https://www.rzd.ru/ru/9269"><img alt="logo VK" class="basementBlockRightLinkImg" th:src="@{/img/logotype.png}"></a>
+                <a href="https://vk.com/id310386679"><img alt="logo RR" class="basementBlockRightLinkImg" th:src="@{/img/vk.png}"></a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

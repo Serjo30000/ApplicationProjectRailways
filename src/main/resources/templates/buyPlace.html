@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thyneleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Покупка билета</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="header">
+    <div class="headerBlock">
+        <div class="logo">
+            <a href="/"><img class="logoImg" th:src="@{/img/logotype.png}" alt="Logotype" /></a>
+        </div>
+        <div class="spaceLogo">
+            <div class="spaceLogoName">
+                <a class="spaceLogoNameLink" href="/mainClient/myTicket">
+                    Мои билеты
+                </a>
+            </div>
+            <div class="spaceLogoName">
+                <a class="spaceLogoNameLink" href="/mainClient/scheduleTrain">
+                    Поезда и маршруты
+                </a>
+            </div>
+            <div  class="spaceLogoName">
+                <a class="spaceLogoNameLink" href="/mainClient/scheduleTerminal">
+                    Вокзалы
+                </a>
+            </div>
+        </div>
+        <div class="logoName" sec:authorize="isAuthenticated()">
+            <a class="logoNameLogin" href="/account" sec:authentication="name">
+            </a>
+            <div class="logoNameExit">
+                <div class="logoNameExitColor">
+                    <a class="logoNameExitLink" href="/logout">Выйти</a>
+                </div>
+            </div>
+        </div>
+        <div class="logoName" sec:authorize="!isAuthenticated()">
+            <a class="logoNameLogin" href="/" >
+                Логин
+            </a>
+            <div class="logoNameExit">
+                <div class="logoNameExitColor">
+                    <a class="logoNameExitLink" href="/login">Войти</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="free">
+
+</div>
+<div  class="tableBlock">
+    <div th:if="${vanObject.getTypeVan().equals('Купейный')}" class="scheduleBlocksArrival" >
+        <div class="scheduleHeaderArrival">Приобритение билета</div>
+        <div class="buyHeader">Выберите место:</div>
+        <div class="buyBlockVan">
+            <div class="buyBlockVanImg1">
+                <div class="freeCompartmentBlockLeft1"></div>
+                <div class="compartmentBlocks1" data-th-each="compartment : ${allCompartments}">
+                    <div class="compartmentPlaceBlocks1">
+                        <form th:action="@{/mainClient/buyInfo}" method="get" th:object="${orderTicket}">
+                            <input type="hidden" name="ticketId" th:value="${undoLink}"/>
+                            <input type="hidden" name="trainId" th:value="${trainId}"/>
+                            <input type="hidden" name="arrivalId" th:value="${arrivalId}"/>
+                            <input type="hidden" name="vanId" th:value="${vanId}"/>
+                            <input type="hidden" name="compartmentId" th:value="${compartment.id}"/>
+                            <input type="hidden" name="placeId" th:value="${compartmentServ.allPlaces(compartment.id).get(0).getId()}"/>
+                            <button th:if="${!compartmentServ.allPlaces(compartment.id).get(0).isEngaged()}" class="compartmentPlaceBlocksButtonEngaged1"  type="button" th:text="${compartmentServ.allPlaces(compartment.id).get(0).getNumberPlace()}"></button>
+                            <button th:if="${compartmentServ.allPlaces(compartment.id).get(0).isEngaged()}" class="compartmentPlaceBlocksButton1" type="submit" th:text="${compartmentServ.allPlaces(compartment.id).get(0).getNumberPlace()}"></button>
+                        </form>
+                        <form th:action="@{/mainClient/buyInfo}" method="get" th:object="${orderTicket}">
+                            <input type="hidden" name="ticketId" th:value="${undoLink}"/>
+                            <input type="hidden" name="trainId" th:value="${trainId}"/>
+                            <input type="hidden" name="arrivalId" th:value="${arrivalId}"/>
+                            <input type="hidden" name="vanId" th:value="${vanId}"/>
+                            <input type="hidden" name="compartmentId" th:value="${compartment.id}"/>
+                            <input type="hidden" name="placeId" th:value="${compartmentServ.allPlaces(compartment.id).get(1).getId()}"/>
+                            <button th:if="${!compartmentServ.allPlaces(compartment.id).get(1).isEngaged()}" class="compartmentPlaceBlocksButtonEngaged1"  type="button" th:text="${compartmentServ.allPlaces(compartment.id).get(1).getNumberPlace()}"></button>
+                            <button th:if="${compartmentServ.allPlaces(compartment.id).get(1).isEngaged()}" class="compartmentPlaceBlocksButton1" type="submit" th:text="${compartmentServ.allPlaces(compartment.id).get(1).getNumberPlace()}"></button>
+                        </form>
+                    </div>
+                    <div class="compartmentPlaceBlocks1">
+                        <form th:action="@{/mainClient/buyInfo}" method="get" th:object="${orderTicket}">
+                            <input type="hidden" name="ticketId" th:value="${undoLink}"/>
+                            <input type="hidden" name="trainId" th:value="${trainId}"/>
+                            <input type="hidden" name="arrivalId" th:value="${arrivalId}"/>
+                            <input type="hidden" name="vanId" th:value="${vanId}"/>
+                            <input type="hidden" name="compartmentId" th:value="${compartment.id}"/>
+                            <input type="hidden" name="placeId" th:value="${compartmentServ.allPlaces(compartment.id).get(2).getId()}"/>
+                            <button th:if="${!compartmentServ.allPlaces(compartment.id).get(2).isEngaged()}" class="compartmentPlaceBlocksButtonEngaged1"  type="button" th:text="${compartmentServ.allPlaces(compartment.id).get(2).getNumberPlace()}"></button>
+                            <button th:if="${compartmentServ.allPlaces(compartment.id).get(2).isEngaged()}" class="compartmentPlaceBlocksButton1" type="submit" th:text="${compartmentServ.allPlaces(compartment.id).get(2).getNumberPlace()}"></button>
+                        </form>
+                        <form th:action="@{/mainClient/buyInfo}" method="get" th:object="${orderTicket}">
+                            <input type="hidden" name="ticketId" th:value="${undoLink}"/>
+                            <input type="hidden" name="trainId" th:value="${trainId}"/>
+                            <input type="hidden" name="arrivalId" th:value="${arrivalId}"/>
+                            <input type="hidden" name="vanId" th:value="${vanId}"/>
+                            <input type="hidden" name="compartmentId" th:value="${compartment.id}"/>
+                            <input type="hidden" name="placeId" th:value="${compartmentServ.allPlaces(compartment.id).get(3).getId()}"/>
+                            <button th:if="${!compartmentServ.allPlaces(compartment.id).get(3).isEngaged()}" class="compartmentPlaceBlocksButtonEngaged1"  type="button" th:text="${compartmentServ.allPlaces(compartment.id).get(3).getNumberPlace()}"></button>
+                            <button th:if="${compartmentServ.allPlaces(compartment.id).get(3).isEngaged()}" class="compartmentPlaceBlocksButton1" type="submit" th:text="${compartmentServ.allPlaces(compartment.id).get(3).getNumberPlace()}"></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="freeCompartmentBlockRight1"></div>
+            </div>
+        </div>
+        <a th:href="@{/mainClient/buyVan(ticketId=${undoLink},trainId=${trainId},arrivalId=${arrivalId})}" class="scheduleLinkArrival">Вернуться</a>
+    </div>
+    <div th:if="${vanObject.getTypeVan().equals('Плацкартный')}" class="scheduleBlocksArrival" >
+        <div class="scheduleHeaderArrival">Приобритение билета</div>
+        <div class="buyHeader">Выберите место:</div>
+        <div class="buyBlockVan">
+            <div class="buyBlockVanImg2">
+                <div class="freeCompartmentBlockLeft1"></div>
+                <div class="compartmentBlocks1" data-th-each="compartment : ${allCompartments}">
+                    <div class="compartmentPlaceBlocks1">
+                        <form th:action="@{/mainClient/buyInfo}" method="get" th:object="${orderTicket}">
+                            <input type="hidden" name="ticketId" th:value="${undoLink}"/>
+                            <input type="hidden" name="trainId" th:value="${trainId}"/>
+                            <input type="hidden" name="arrivalId" th:value="${arrivalId}"/>
+                            <input type="hidden" name="vanId" th:value="${vanId}"/>
+                            <input type="hidden" name="compartmentId" th:value="${compartment.id}"/>
+                            <input type="hidden" name="placeId" th:value="${compartmentServ.allPlaces(compartment.id).get(0).getId()}"/>
+                            <button th:if="${!compartmentServ.allPlaces(compartment.id).get(0).isEngaged()}" class="compartmentPlaceBlocksButtonEngaged1"  type="button" th:text="${compartmentServ.allPlaces(compartment.id).get(0).getNumberPlace()}"></button>
+                            <button th:if="${compartmentServ.allPlaces(compartment.id).get(0).isEngaged()}" class="compartmentPlaceBlocksButton1" type="submit" th:text="${compartmentServ.allPlaces(compartment.id).get(0).getNumberPlace()}"></button>
+                        </form>
+                        <form th:action="@{/mainClient/buyInfo}" method="get" th:object="${orderTicket}">
+                            <input type="hidden" name="ticketId" th:value="${undoLink}"/>
+                            <input type="hidden" name="trainId" th:value="${trainId}"/>
+                            <input type="hidden" name="arrivalId" th:value="${arrivalId}"/>
+                            <input type="hidden" name="vanId" th:value="${vanId}"/>
+                            <input type="hidden" name="compartmentId" th:value="${compartment.id}"/>
+                            <input type="hidden" name="placeId" th:value="${compartmentServ.allPlaces(compartment.id).get(1).getId()}"/>
+                            <button th:if="${!compartmentServ.allPlaces(compartment.id).get(1).isEngaged()}" class="compartmentPlaceBlocksButtonEngaged1"  type="button" th:text="${compartmentServ.allPlaces(compartment.id).get(1).getNumberPlace()}"></button>
+                            <button th:if="${compartmentServ.allPlaces(compartment.id).get(1).isEngaged()}" class="compartmentPlaceBlocksButton1" type="submit" th:text="${compartmentServ.allPlaces(compartment.id).get(1).getNumberPlace()}"></button>
+                        </form>
+                    </div>
+                    <div class="compartmentPlaceBlocks1">
+                        <form th:action="@{/mainClient/buyInfo}" method="get" th:object="${orderTicket}">
+                            <input type="hidden" name="ticketId" th:value="${undoLink}"/>
+                            <input type="hidden" name="trainId" th:value="${trainId}"/>
+                            <input type="hidden" name="arrivalId" th:value="${arrivalId}"/>
+                            <input type="hidden" name="vanId" th:value="${vanId}"/>
+                            <input type="hidden" name="compartmentId" th:value="${compartment.id}"/>
+                            <input type="hidden" name="placeId" th:value="${compartmentServ.allPlaces(compartment.id).get(2).getId()}"/>
+                            <button th:if="${!compartmentServ.allPlaces(compartment.id).get(2).isEngaged()}" class="compartmentPlaceBlocksButtonEngaged1"  type="button" th:text="${compartmentServ.allPlaces(compartment.id).get(2).getNumberPlace()}"></button>
+                            <button th:if="${compartmentServ.allPlaces(compartment.id).get(2).isEngaged()}" class="compartmentPlaceBlocksButton1" type="submit" th:text="${compartmentServ.allPlaces(compartment.id).get(2).getNumberPlace()}"></button>
+                        </form>
+                        <form th:action="@{/mainClient/buyInfo}" method="get" th:object="${orderTicket}">
+                            <input type="hidden" name="ticketId" th:value="${undoLink}"/>
+                            <input type="hidden" name="trainId" th:value="${trainId}"/>
+                            <input type="hidden" name="arrivalId" th:value="${arrivalId}"/>
+                            <input type="hidden" name="vanId" th:value="${vanId}"/>
+                            <input type="hidden" name="compartmentId" th:value="${compartment.id}"/>
+                            <input type="hidden" name="placeId" th:value="${compartmentServ.allPlaces(compartment.id).get(3).getId()}"/>
+                            <button th:if="${!compartmentServ.allPlaces(compartment.id).get(3).isEngaged()}" class="compartmentPlaceBlocksButtonEngaged1"  type="button" th:text="${compartmentServ.allPlaces(compartment.id).get(3).getNumberPlace()}"></button>
+                            <button th:if="${compartmentServ.allPlaces(compartment.id).get(3).isEngaged()}" class="compartmentPlaceBlocksButton1" type="submit" th:text="${compartmentServ.allPlaces(compartment.id).get(3).getNumberPlace()}"></button>
+                        </form>
+                    </div>
+                    <div class="compartmentPlaceBlocks1"></div>
+                    <div class="compartmentPlaceBlocks3">
+                        <form th:action="@{/mainClient/buyInfo}" method="get" th:object="${orderTicket}">
+                            <input type="hidden" name="ticketId" th:value="${undoLink}"/>
+                            <input type="hidden" name="trainId" th:value="${trainId}"/>
+                            <input type="hidden" name="arrivalId" th:value="${arrivalId}"/>
+                            <input type="hidden" name="vanId" th:value="${vanId}"/>
+                            <input type="hidden" name="compartmentId" th:value="${compartment.id}"/>
+                            <input type="hidden" name="placeId" th:value="${compartmentServ.allPlaces(compartment.id).get(4).getId()}"/>
+                            <button th:if="${!compartmentServ.allPlaces(compartment.id).get(4).isEngaged()}" class="compartmentPlaceBlocksButtonEngaged3"  type="button" th:text="${compartmentServ.allPlaces(compartment.id).get(4).getNumberPlace()}"></button>
+                            <button th:if="${compartmentServ.allPlaces(compartment.id).get(4).isEngaged()}" class="compartmentPlaceBlocksButton3" type="submit" th:text="${compartmentServ.allPlaces(compartment.id).get(4).getNumberPlace()}"></button>
+                        </form>
+                        <form th:action="@{/mainClient/buyInfo}" method="get" th:object="${orderTicket}">
+                            <input type="hidden" name="ticketId" th:value="${undoLink}"/>
+                            <input type="hidden" name="trainId" th:value="${trainId}"/>
+                            <input type="hidden" name="arrivalId" th:value="${arrivalId}"/>
+                            <input type="hidden" name="vanId" th:value="${vanId}"/>
+                            <input type="hidden" name="compartmentId" th:value="${compartment.id}"/>
+                            <input type="hidden" name="placeId" th:value="${compartmentServ.allPlaces(compartment.id).get(5).getId()}"/>
+                            <button th:if="${!compartmentServ.allPlaces(compartment.id).get(5).isEngaged()}" class="compartmentPlaceBlocksButtonEngaged3"  type="button" th:text="${compartmentServ.allPlaces(compartment.id).get(5).getNumberPlace()}"></button>
+                            <button th:if="${compartmentServ.allPlaces(compartment.id).get(5).isEngaged()}" class="compartmentPlaceBlocksButton3" type="submit" th:text="${compartmentServ.allPlaces(compartment.id).get(5).getNumberPlace()}"></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="freeCompartmentBlockRight1"></div>
+            </div>
+        </div>
+        <a th:href="@{/mainClient/buyVan(ticketId=${undoLink},trainId=${trainId},arrivalId=${arrivalId})}" class="scheduleLinkArrival">Вернуться</a>
+    </div>
+    <div th:if="${vanObject.getTypeVan().equals('СВ')}" class="scheduleBlocksArrival" >
+        <div class="scheduleHeaderArrival">Приобритение билета</div>
+        <div class="buyHeader">Выберите место:</div>
+        <div class="buyBlockVan">
+            <div class="buyBlockVanImg3">
+                <div class="freeCompartmentBlockLeft1"></div>
+                <div class="compartmentBlocks1" data-th-each="compartment : ${allCompartments}">
+                    <div class="compartmentPlaceBlocks1">
+                        <form th:action="@{/mainClient/buyInfo}" method="get" th:object="${orderTicket}">
+                            <input type="hidden" name="ticketId" th:value="${undoLink}"/>
+                            <input type="hidden" name="trainId" th:value="${trainId}"/>
+                            <input type="hidden" name="arrivalId" th:value="${arrivalId}"/>
+                            <input type="hidden" name="vanId" th:value="${vanId}"/>
+                            <input type="hidden" name="compartmentId" th:value="${compartment.id}"/>
+                            <input type="hidden" name="placeId" th:value="${compartmentServ.allPlaces(compartment.id).get(0).getId()}"/>
+                            <button th:if="${!compartmentServ.allPlaces(compartment.id).get(0).isEngaged()}" class="compartmentPlaceBlocksButtonEngaged2"  type="button" th:text="${compartmentServ.allPlaces(compartment.id).get(0).getNumberPlace()}"></button>
+                            <button th:if="${compartmentServ.allPlaces(compartment.id).get(0).isEngaged()}" class="compartmentPlaceBlocksButton2" type="submit" th:text="${compartmentServ.allPlaces(compartment.id).get(0).getNumberPlace()}"></button>
+                        </form>
+                        <form th:action="@{/mainClient/buyInfo}" method="get" th:object="${orderTicket}">
+                            <input type="hidden" name="ticketId" th:value="${undoLink}"/>
+                            <input type="hidden" name="trainId" th:value="${trainId}"/>
+                            <input type="hidden" name="arrivalId" th:value="${arrivalId}"/>
+                            <input type="hidden" name="vanId" th:value="${vanId}"/>
+                            <input type="hidden" name="compartmentId" th:value="${compartment.id}"/>
+                            <input type="hidden" name="placeId" th:value="${compartmentServ.allPlaces(compartment.id).get(1).getId()}"/>
+                            <button th:if="${!compartmentServ.allPlaces(compartment.id).get(1).isEngaged()}" class="compartmentPlaceBlocksButtonEngaged2"  type="button" th:text="${compartmentServ.allPlaces(compartment.id).get(1).getNumberPlace()}"></button>
+                            <button th:if="${compartmentServ.allPlaces(compartment.id).get(1).isEngaged()}" class="compartmentPlaceBlocksButton2" type="submit" th:text="${compartmentServ.allPlaces(compartment.id).get(1).getNumberPlace()}"></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="freeCompartmentBlockRight1"></div>
+            </div>
+        </div>
+        <a th:href="@{/mainClient/buyVan(ticketId=${undoLink},trainId=${trainId},arrivalId=${arrivalId})}" class="scheduleLinkArrival">Вернуться</a>
+    </div>
+    <div th:if="${vanObject.getTypeVan().equals('Сидячий')}" class="scheduleBlocksArrival" >
+        <div class="scheduleHeaderArrival">Приобритение билета</div>
+        <div class="buyHeader">Выберите место:</div>
+        <div class="buyHeader">1 Этаж</div>
+        <div class="buyBlockVan">
+            <div class="buyBlockVanImg4">
+                <div class="freeCompartmentBlockLeft4"></div>
+                <div class="compartmentBlocks4">
+                    <div class="compartmentPlaceBlocks4" data-th-each="indexPl : ${#numbers.sequence(0,11)}">
+                        <form th:action="@{/mainClient/buyInfo}" method="get" th:object="${orderTicket}">
+                            <input type="hidden" name="ticketId" th:value="${undoLink}"/>
+                            <input type="hidden" name="trainId" th:value="${trainId}"/>
+                            <input type="hidden" name="arrivalId" th:value="${arrivalId}"/>
+                            <input type="hidden" name="vanId" th:value="${vanId}"/>
+                            <input type="hidden" name="compartmentId" th:value="${allCompartments.get(0).getId()}"/>
+                            <input type="hidden" name="placeId" th:value="${compartmentServ.allPlaces(allCompartments.get(0).getId()).get(indexPl).getId()}"/>
+                            <button th:if="${!compartmentServ.allPlaces(allCompartments.get(0).getId()).get(indexPl).isEngaged()}" class="compartmentPlaceBlocksButtonEngaged4"  type="button" th:text="${compartmentServ.allPlaces(allCompartments.get(0).getId()).get(indexPl).getNumberPlace()}"></button>
+                            <button th:if="${compartmentServ.allPlaces(allCompartments.get(0).getId()).get(indexPl).isEngaged()}" class="compartmentPlaceBlocksButton4" type="submit" th:text="${compartmentServ.allPlaces(allCompartments.get(0).getId()).get(indexPl).getNumberPlace()}"></button>
+                        </form>
+                    </div>
+                    <div class="compartmentPlaceBlocks4" data-th-each="indexPl : ${#numbers.sequence(12,23)}">
+                        <form th:action="@{/mainClient/buyInfo}" method="get" th:object="${orderTicket}">
+                            <input type="hidden" name="ticketId" th:value="${undoLink}"/>
+                            <input type="hidden" name="trainId" th:value="${trainId}"/>
+                            <input type="hidden" name="arrivalId" th:value="${arrivalId}"/>
+                            <input type="hidden" name="vanId" th:value="${vanId}"/>
+                            <input type="hidden" name="compartmentId" th:value="${allCompartments.get(0).getId()}"/>
+                            <input type="hidden" name="placeId" th:value="${compartmentServ.allPlaces(allCompartments.get(0).getId()).get(indexPl).getId()}"/>
+                            <button th:if="${!compartmentServ.allPlaces(allCompartments.get(0).getId()).get(indexPl).isEngaged()}" class="compartmentPlaceBlocksButtonEngaged4"  type="button" th:text="${compartmentServ.allPlaces(allCompartments.get(0).getId()).get(indexPl).getNumberPlace()}"></button>
+                            <button th:if="${compartmentServ.allPlaces(allCompartments.get(0).getId()).get(indexPl).isEngaged()}" class="compartmentPlaceBlocksButton4" type="submit" th:text="${compartmentServ.allPlaces(allCompartments.get(0).getId()).get(indexPl).getNumberPlace()}"></button>
+                        </form>
+                    </div>
+                    <div class="compartmentPlaceBlocks3"></div>
+                    <div class="compartmentPlaceBlocks3"></div>
+                    <div class="compartmentPlaceBlocks5" data-th-each="indexPl : ${#numbers.sequence(24,35)}">
+                        <form th:action="@{/mainClient/buyInfo}" method="get" th:object="${orderTicket}">
+                            <input type="hidden" name="ticketId" th:value="${undoLink}"/>
+                            <input type="hidden" name="trainId" th:value="${trainId}"/>
+                            <input type="hidden" name="arrivalId" th:value="${arrivalId}"/>
+                            <input type="hidden" name="vanId" th:value="${vanId}"/>
+                            <input type="hidden" name="compartmentId" th:value="${allCompartments.get(0).getId()}"/>
+                            <input type="hidden" name="placeId" th:value="${compartmentServ.allPlaces(allCompartments.get(0).getId()).get(indexPl).getId()}"/>
+                            <button th:if="${!compartmentServ.allPlaces(allCompartments.get(0).getId()).get(indexPl).isEngaged()}" class="compartmentPlaceBlocksButtonEngaged4"  type="button" th:text="${compartmentServ.allPlaces(allCompartments.get(0).getId()).get(indexPl).getNumberPlace()}"></button>
+                            <button th:if="${compartmentServ.allPlaces(allCompartments.get(0).getId()).get(indexPl).isEngaged()}" class="compartmentPlaceBlocksButton4" type="submit" th:text="${compartmentServ.allPlaces(allCompartments.get(0).getId()).get(indexPl).getNumberPlace()}"></button>
+                        </form>
+                    </div>
+                    <div class="compartmentPlaceBlocks5" data-th-each="indexPl : ${#numbers.sequence(36,49)}">
+                        <form th:action="@{/mainClient/buyInfo}" method="get" th:object="${orderTicket}">
+                            <input type="hidden" name="ticketId" th:value="${undoLink}"/>
+                            <input type="hidden" name="trainId" th:value="${trainId}"/>
+                            <input type="hidden" name="arrivalId" th:value="${arrivalId}"/>
+                            <input type="hidden" name="vanId" th:value="${vanId}"/>
+                            <input type="hidden" name="compartmentId" th:value="${allCompartments.get(0).getId()}"/>
+                            <input type="hidden" name="placeId" th:value="${compartmentServ.allPlaces(allCompartments.get(0).getId()).get(indexPl).getId()}"/>
+                            <button th:if="${!compartmentServ.allPlaces(allCompartments.get(0).getId()).get(indexPl).isEngaged()}" class="compartmentPlaceBlocksButtonEngaged4"  type="button" th:text="${compartmentServ.allPlaces(allCompartments.get(0).getId()).get(indexPl).getNumberPlace()}"></button>
+                            <button th:if="${compartmentServ.allPlaces(allCompartments.get(0).getId()).get(indexPl).isEngaged()}" class="compartmentPlaceBlocksButton4" type="submit" th:text="${compartmentServ.allPlaces(allCompartments.get(0).getId()).get(indexPl).getNumberPlace()}"></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="freeCompartmentBlockRight4"></div>
+            </div>
+        </div>
+        <div class="buyHeader">2 Этаж</div>
+        <div class="buyBlockVan">
+            <div class="buyBlockVanImg5">
+                <div class="freeCompartmentBlockLeft4"></div>
+                <div class="compartmentBlocks4">
+                    <div class="compartmentPlaceBlocks5" data-th-each="indexPl : ${#numbers.sequence(0,12)}">
+                        <form th:action="@{/mainClient/buyInfo}" method="get" th:object="${orderTicket}">
+                            <input type="hidden" name="ticketId" th:value="${undoLink}"/>
+                            <input type="hidden" name="trainId" th:value="${trainId}"/>
+                            <input type="hidden" name="arrivalId" th:value="${arrivalId}"/>
+                            <input type="hidden" name="vanId" th:value="${vanId}"/>
+                            <input type="hidden" name="compartmentId" th:value="${allCompartments.get(1).getId()}"/>
+                            <input type="hidden" name="placeId" th:value="${compartmentServ.allPlaces(allCompartments.get(1).getId()).get(indexPl).getId()}"/>
+                            <button th:if="${!compartmentServ.allPlaces(allCompartments.get(1).getId()).get(indexPl).isEngaged()}" class="compartmentPlaceBlocksButtonEngaged4"  type="button" th:text="${compartmentServ.allPlaces(allCompartments.get(1).getId()).get(indexPl).getNumberPlace()}"></button>
+                            <button th:if="${compartmentServ.allPlaces(allCompartments.get(1).getId()).get(indexPl).isEngaged()}" class="compartmentPlaceBlocksButton4" type="submit" th:text="${compartmentServ.allPlaces(allCompartments.get(1).getId()).get(indexPl).getNumberPlace()}"></button>
+                        </form>
+                    </div>
+                    <div class="compartmentPlaceBlocks5" data-th-each="indexPl : ${#numbers.sequence(13,25)}">
+                        <form th:action="@{/mainClient/buyInfo}" method="get" th:object="${orderTicket}">
+                            <input type="hidden" name="ticketId" th:value="${undoLink}"/>
+                            <input type="hidden" name="trainId" th:value="${trainId}"/>
+                            <input type="hidden" name="arrivalId" th:value="${arrivalId}"/>
+                            <input type="hidden" name="vanId" th:value="${vanId}"/>
+                            <input type="hidden" name="compartmentId" th:value="${allCompartments.get(1).getId()}"/>
+                            <input type="hidden" name="placeId" th:value="${compartmentServ.allPlaces(allCompartments.get(1).getId()).get(indexPl).getId()}"/>
+                            <button th:if="${!compartmentServ.allPlaces(allCompartments.get(1).getId()).get(indexPl).isEngaged()}" class="compartmentPlaceBlocksButtonEngaged4"  type="button" th:text="${compartmentServ.allPlaces(allCompartments.get(1).getId()).get(indexPl).getNumberPlace()}"></button>
+                            <button th:if="${compartmentServ.allPlaces(allCompartments.get(1).getId()).get(indexPl).isEngaged()}" class="compartmentPlaceBlocksButton4" type="submit" th:text="${compartmentServ.allPlaces(allCompartments.get(1).getId()).get(indexPl).getNumberPlace()}"></button>
+                        </form>
+                    </div>
+                    <div class="compartmentPlaceBlocks3"></div>
+                    <div class="compartmentPlaceBlocks3"></div>
+                    <div class="compartmentPlaceBlocks4" data-th-each="indexPl : ${#numbers.sequence(26,37)}">
+                        <form th:action="@{/mainClient/buyInfo}" method="get" th:object="${orderTicket}">
+                            <input type="hidden" name="ticketId" th:value="${undoLink}"/>
+                            <input type="hidden" name="trainId" th:value="${trainId}"/>
+                            <input type="hidden" name="arrivalId" th:value="${arrivalId}"/>
+                            <input type="hidden" name="vanId" th:value="${vanId}"/>
+                            <input type="hidden" name="compartmentId" th:value="${allCompartments.get(1).getId()}"/>
+                            <input type="hidden" name="placeId" th:value="${compartmentServ.allPlaces(allCompartments.get(1).getId()).get(indexPl).getId()}"/>
+                            <button th:if="${!compartmentServ.allPlaces(allCompartments.get(1).getId()).get(indexPl).isEngaged()}" class="compartmentPlaceBlocksButtonEngaged4"  type="button" th:text="${compartmentServ.allPlaces(allCompartments.get(1).getId()).get(indexPl).getNumberPlace()}"></button>
+                            <button th:if="${compartmentServ.allPlaces(allCompartments.get(1).getId()).get(indexPl).isEngaged()}" class="compartmentPlaceBlocksButton4" type="submit" th:text="${compartmentServ.allPlaces(allCompartments.get(1).getId()).get(indexPl).getNumberPlace()}"></button>
+                        </form>
+                    </div>
+                    <div class="compartmentPlaceBlocks4" data-th-each="indexPl : ${#numbers.sequence(38,49)}">
+                        <form th:action="@{/mainClient/buyInfo}" method="get" th:object="${orderTicket}">
+                            <input type="hidden" name="ticketId" th:value="${undoLink}"/>
+                            <input type="hidden" name="trainId" th:value="${trainId}"/>
+                            <input type="hidden" name="arrivalId" th:value="${arrivalId}"/>
+                            <input type="hidden" name="vanId" th:value="${vanId}"/>
+                            <input type="hidden" name="compartmentId" th:value="${allCompartments.get(1).getId()}"/>
+                            <input type="hidden" name="placeId" th:value="${compartmentServ.allPlaces(allCompartments.get(1).getId()).get(indexPl).getId()}"/>
+                            <button th:if="${!compartmentServ.allPlaces(allCompartments.get(1).getId()).get(indexPl).isEngaged()}" class="compartmentPlaceBlocksButtonEngaged4"  type="button" th:text="${compartmentServ.allPlaces(allCompartments.get(1).getId()).get(indexPl).getNumberPlace()}"></button>
+                            <button th:if="${compartmentServ.allPlaces(allCompartments.get(1).getId()).get(indexPl).isEngaged()}" class="compartmentPlaceBlocksButton4" type="submit" th:text="${compartmentServ.allPlaces(allCompartments.get(1).getId()).get(indexPl).getNumberPlace()}"></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="freeCompartmentBlockRight4"></div>
+            </div>
+        </div>
+        <a th:href="@{/mainClient/buyVan(ticketId=${undoLink},trainId=${trainId},arrivalId=${arrivalId})}" class="scheduleLinkArrival">Вернуться</a>
+    </div>
+</div>
+<div class="free">
+
+</div>
+<div class="basement">
+    <div class="basementBlock">
+        <div class="basementBlockLeft">
+            <div class="basementBlockLeftName">
+                О сайте
+            </div>
+            <div class="basementBlockLeftText">
+                Сайт создан для проекта по теме "РЖД", по предмету Современные технологии объектно-ориентированного программирования.
+            </div>
+        </div>
+        <div class="basementBlockRight">
+            <div class="basementBlockRightName">
+                Ссылки
+            </div>
+            <div class="basementBlockRightLink">
+                <a href="https://www.rzd.ru/ru/9269"><img alt="logo VK" class="basementBlockRightLinkImg" th:src="@{/img/logotype.png}"></a>
+                <a href="https://vk.com/id310386679"><img alt="logo RR" class="basementBlockRightLinkImg" th:src="@{/img/vk.png}"></a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

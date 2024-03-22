@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thyneleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <title>Билеты</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="header">
+  <div class="headerBlock">
+    <div class="logo">
+      <a href="/"><img class="logoImg" th:src="@{/img/logotype.png}" alt="Logotype" /></a>
+    </div>
+    <div class="spaceLogo">
+      <div class="spaceLogoName">
+        <a class="spaceLogoNameLink" href="/companyPanel/companyTicket">
+          Билеты
+        </a>
+      </div>
+      <div class="spaceLogoName">
+        <a class="spaceLogoNameLink" href="/companyPanel/companyTrain">
+          Поезда
+        </a>
+      </div>
+      <div  class="spaceLogoName">
+        <a class="spaceLogoNameLink" href="/companyPanel/companyTerminal">
+          Вокзалы
+        </a>
+      </div>
+    </div>
+    <div class="logoName" sec:authorize="isAuthenticated()">
+      <a class="logoNameLogin" href="/account" sec:authentication="name">
+      </a>
+      <div class="logoNameExit">
+        <div class="logoNameExitColor">
+          <a class="logoNameExitLink" href="/logout">Выйти</a>
+        </div>
+      </div>
+    </div>
+    <div class="logoName" sec:authorize="!isAuthenticated()">
+      <a class="logoNameLogin" href="/" >
+        Логин
+      </a>
+      <div class="logoNameExit">
+        <div class="logoNameExitColor">
+          <a class="logoNameExitLink" href="/login">Войти</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="routeFormBlockName">
+  Редактирование Билетов
+</div>
+<div class="sort">
+  <div class="sortBlocks">
+    <form class="sortBlock" th:action="@{/companyPanel/companyTicket}" method="post">
+      <div class="sortBlockChoice1">
+        <tr th:each="ticket,i : ${allTickets}">
+          <td><input name="lstTick" th:value="${ticket.getId()}" type="hidden"></td>
+        </tr>
+        <select name="sortName" class="sortBlockChoice1Select" size="1" required>
+          <option selected value="Отсутствует">Отсутствует</option>
+          <option value="По стоимости">По стоимости</option>
+          <option value="По количеству мест">По количеству мест</option>
+        </select>
+      </div>
+      <div class="sortBlockChoice2">
+        <select name="sortBy" class="sortBlockChoice2Select" size="1" required>
+          <option selected value="По возрастанию">По возрастанию</option>
+          <option value="По убыванию">По убыванию</option>
+        </select>
+      </div>
+      <div th:if="${allTickets.size()>0}" class="sortBlockButton">
+        <button class="sortBlockButtonSubmit" type="submit">Применить</button>
+      </div>
+      <div th:if="${allTickets.size()<=0}" class="sortBlockButton">
+        <button class="sortBlockButtonSubmit" type="button">Применить</button>
+      </div>
+    </form>
+    <form class="sortBlockReset" th:action="@{/companyPanel/companyTicket}" method="post">
+      <div class="sortBlockButtonReset">
+        <button class="sortBlockButtonSubmit" type="submit">Сбросить</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div  class="tableBlock">
+  <form class="tableBlockLink" th:action="@{/companyPanel/companyTicket/createCompanyTicket}" method="get">
+    <button class="tableButton" type="submit">Создать</button>
+  </form>
+  <div class="scheduleBlocks" >
+    <div class="scheduleBlock">
+      <div class="scheduleBlockFieldHTerminal">Номер</div>
+      <div class="scheduleBlockFieldHTerminal">Номер поезда</div>
+      <div class="scheduleBlockFieldHTerminal">Использование</div>
+      <div class="scheduleBlockFieldHTerminal">Кол-во мест</div>
+      <div class="scheduleBlockFieldHTerminal">Занято мест</div>
+      <div class="scheduleBlockFieldHTerminal">Средняя цена</div>
+      <div class="scheduleBlockFieldHTerminal">Посмотреть</div>
+      <div class="scheduleBlockFieldHTerminal">Изменить</div>
+      <div class="scheduleBlockFieldHTerminal">Удалить</div>
+    </div>
+    <div class="scheduleBlock" data-th-each="ticket : ${allTickets}">
+      <div class="scheduleBlockFieldTerminal" th:text="${ticket.id}"></div>
+      <div class="scheduleBlockFieldTerminal" th:text="${ticket.trainId}"></div>
+      <div class="scheduleBlockFieldTerminal" th:if="${ticketServ.allArrivals(ticket.id)==null || ticketServ.allArrivals(ticket.id).size()<=0 || ticketServ.allArrivals(ticket.id).size()>0 && ticketServ.allArrivals(ticket.id).get(ticketServ.allArrivals(ticket.id).size()-1).getDate().before(todayData)}" th:text="Просрочен"></div>
+      <div class="scheduleBlockFieldTerminal" th:if="${ticketServ.allArrivals(ticket.id)!=null && ticketServ.allArrivals(ticket.id).size()>0 && ticketServ.allArrivals(ticket.id).get(ticketServ.allArrivals(ticket.id).size()-1).getDate().after(todayData)}" th:text="Используется"></div>
+      <div class="scheduleBlockFieldTerminal" th:text="${trainServ.countPlaceTrainAll(ticket.trainId)}"></div>
+      <div class="scheduleBlockFieldTerminal" th:text="${trainServ.countPlaceTrainAll(ticket.trainId)-trainServ.countPlaceTrain(ticket.trainId)}"></div>
+      <div class="scheduleBlockFieldTerminal" th:text="${trainServ.averagePricePlace(ticket.trainId)}"></div>
+      <form class="scheduleBlockButtonTerminal" th:action="@{/companyPanel/companyTicket/viewCompanyTicket}" method="get">
+        <input type="hidden" name="ticketId" th:value="${ticket.id}"/>
+        <button class="scheduleBlockButtonTerminalSubmit" type="submit">Посмотреть</button>
+      </form>
+      <form class="scheduleBlockButtonTerminal" th:action="@{/companyPanel/companyTicket/editCompanyTicket}" method="get">
+        <input type="hidden" name="ticketId" th:value="${ticket.id}"/>
+        <button class="scheduleBlockButtonTerminalSubmit" type="submit">Изменить</button>
+      </form>
+      <form class="scheduleBlockButtonTerminal" th:action="@{/companyPanel/companyTicket}" method="post">
+        <input type="hidden" name="ticketId" th:value="${ticket.id}"/>
+        <input type="hidden" name="action" value="delete"/>
+        <button class="scheduleBlockButtonTerminalSubmit" type="submit">Удалить</button>
+      </form>
+    </div>
+  </div>
+  <div class="tableBlockLink">
+    <a class="tableBlockLinkA" href="/companyPanel">Вернуться</a>
+  </div>
+</div>
+<div class="free">
+
+</div>
+<div class="basement">
+  <div class="basementBlock">
+    <div class="basementBlockLeft">
+      <div class="basementBlockLeftName">
+        О сайте
+      </div>
+      <div class="basementBlockLeftText">
+        Сайт создан для проекта по теме "РЖД", по предмету Современные технологии объектно-ориентированного программирования.
+      </div>
+    </div>
+    <div class="basementBlockRight">
+      <div class="basementBlockRightName">
+        Ссылки
+      </div>
+      <div class="basementBlockRightLink">
+        <a href="https://www.rzd.ru/ru/9269"><img alt="logo VK" class="basementBlockRightLinkImg" th:src="@{/img/logotype.png}"></a>
+        <a href="https://vk.com/id310386679"><img alt="logo RR" class="basementBlockRightLinkImg" th:src="@{/img/vk.png}"></a>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

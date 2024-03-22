@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thyneleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменить билет</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="header">
+    <div class="headerBlock">
+        <div class="logo">
+            <a href="/"><img class="logoImg" th:src="@{/img/logotype.png}" alt="Logotype" /></a>
+        </div>
+        <div class="spaceLogo">
+            <div class="spaceLogoNameAdmin">
+                <a href="/adminPanel/adminUser" class="spaceLogoNameLinkAdmin">Пользователи</a>
+            </div>
+            <div class="spaceLogoNameAdmin">
+                <a href="/adminPanel/adminTrain" class="spaceLogoNameLinkAdmin">Поезда</a>
+            </div>
+            <div class="spaceLogoNameAdmin">
+                <a href="/adminPanel/adminTicket" class="spaceLogoNameLinkAdmin">Билеты</a>
+            </div>
+            <div class="spaceLogoNameAdmin">
+                <a href="/adminPanel/adminCountry" class="spaceLogoNameLinkAdmin">Страны</a>
+            </div>
+        </div>
+        <div class="logoName" sec:authorize="isAuthenticated()">
+            <a class="logoNameLogin" href="/account" sec:authentication="name">
+            </a>
+            <div class="logoNameExit">
+                <div class="logoNameExitColor">
+                    <a class="logoNameExitLink" href="/logout">Выйти</a>
+                </div>
+            </div>
+        </div>
+        <div class="logoName" sec:authorize="!isAuthenticated()">
+            <a class="logoNameLogin" href="/" >
+                Логин
+            </a>
+            <div class="logoNameExit">
+                <div class="logoNameExitColor">
+                    <a class="logoNameExitLink" href="/login">Войти</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="settingForm">
+    <div class="settingFormBlock">
+        <form th:action="@{/adminPanel/adminTicket/editAdminTicket}" th:object="${ticketForm}" method="post">
+            <div class="settingFormBlockName">Изменение</div>
+            <input class="settingFormBlockInput" name="id" type="hidden" th:field="*{id}" required/>
+            <div class="settingFormBlockArrivals">
+                <input class="settingFormBlockInput" placeholder="Номер поезда" name="trainId" type="number" th:field="*{trainId}" required/>
+            </div>
+            <div class="settingFormBlockB">
+                <button class="settingFormBlockButton" type="submit">Изменить</button>
+            </div>
+            <div class="settingFormBlockLink">
+                <a class="settingFormBlockLinkText" href="/adminPanel/adminTicket">Вернуться</a>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="free">
+
+</div>
+<div class="basement">
+    <div class="basementBlock">
+        <div class="basementBlockLeft">
+            <div class="basementBlockLeftName">
+                О сайте
+            </div>
+            <div class="basementBlockLeftText">
+                Сайт создан для проекта по теме "РЖД", по предмету Современные технологии объектно-ориентированного программирования.
+            </div>
+        </div>
+        <div class="basementBlockRight">
+            <div class="basementBlockRightName">
+                Ссылки
+            </div>
+            <div class="basementBlockRightLink">
+                <a href="https://www.rzd.ru/ru/9269"><img alt="logo VK" class="basementBlockRightLinkImg" th:src="@{/img/logotype.png}"></a>
+                <a href="https://vk.com/id310386679"><img alt="logo RR" class="basementBlockRightLinkImg" th:src="@{/img/vk.png}"></a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

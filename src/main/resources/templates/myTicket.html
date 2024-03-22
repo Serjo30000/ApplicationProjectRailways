@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thyneleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Мои билеты</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="header">
+    <div class="headerBlock">
+        <div class="logo">
+            <a href="/"><img class="logoImg" th:src="@{/img/logotype.png}" alt="Logotype" /></a>
+        </div>
+        <div class="spaceLogo">
+            <div class="spaceLogoName">
+                <a class="spaceLogoNameLink" href="/mainClient/myTicket">
+                    Мои билеты
+                </a>
+            </div>
+            <div class="spaceLogoName">
+                <a class="spaceLogoNameLink" href="/mainClient/scheduleTrain">
+                    Поезда и маршруты
+                </a>
+            </div>
+            <div  class="spaceLogoName">
+                <a class="spaceLogoNameLink" href="/mainClient/scheduleTerminal">
+                    Вокзалы
+                </a>
+            </div>
+        </div>
+        <div class="logoName" sec:authorize="isAuthenticated()">
+            <a class="logoNameLogin" href="/account" sec:authentication="name">
+            </a>
+            <div class="logoNameExit">
+                <div class="logoNameExitColor">
+                    <a class="logoNameExitLink" href="/logout">Выйти</a>
+                </div>
+            </div>
+        </div>
+        <div class="logoName" sec:authorize="!isAuthenticated()">
+            <a class="logoNameLogin" href="/" >
+                Логин
+            </a>
+            <div class="logoNameExit">
+                <div class="logoNameExitColor">
+                    <a class="logoNameExitLink" href="/login">Войти</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="routeFormBlockName">
+    Мои билеты
+</div>
+<div class="sort">
+    <div class="sortBlocks">
+        <form class="sortBlock" th:action="@{/mainClient/myTicket}" method="post">
+            <div class="sortBlockChoice1">
+                <tr th:each="order,i : ${allOrders}">
+                    <td><input name="lstOrd" th:value="${order.getId()}" type="hidden"></td>
+                </tr>
+                <select name="sortName" class="sortBlockChoice1Select" size="1" required>
+                    <option selected value="Отсутствует">Отсутствует</option>
+                    <option value="По номеру билета">По номеру билета</option>
+                    <option value="По названию поезда">По названию поезда</option>
+                    <option value="По дате">По дате</option>
+                    <option value="По типу отдела">По типу отдела</option>
+                    <option value="По номеру места">По номеру места</option>
+                    <option value="По стоимости">По стоимости</option>
+                </select>
+            </div>
+            <div class="sortBlockChoice2">
+                <select name="sortBy" class="sortBlockChoice2Select" size="1" required>
+                    <option selected value="По возрастанию">По возрастанию</option>
+                    <option value="По убыванию">По убыванию</option>
+                </select>
+            </div>
+            <div th:if="${allOrders.size()>0}" class="sortBlockButton">
+                <button class="sortBlockButtonSubmit" type="submit">Применить</button>
+            </div>
+            <div th:if="${allOrders.size()<=0}" class="sortBlockButton">
+                <button class="sortBlockButtonSubmit" type="button">Применить</button>
+            </div>
+        </form>
+        <form class="sortBlockReset" th:action="@{/mainClient/myTicket}" method="post">
+            <div class="sortBlockButtonReset">
+                <button class="sortBlockButtonSubmit" type="submit">Сбросить</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div  class="tableBlock">
+    <div class="scheduleBlocks" >
+        <div class="scheduleBlock">
+            <div class="scheduleBlockFieldHTerminal">Номер</div>
+            <div class="scheduleBlockFieldHTerminal">Номер Билета</div>
+            <div class="scheduleBlockFieldHTerminal">Название поезда</div>
+            <div class="scheduleBlockFieldHTerminal">Дата</div>
+            <div class="scheduleBlockFieldHTerminal">Тип отдела</div>
+            <div class="scheduleBlockFieldHTerminal">Номер места</div>
+            <div class="scheduleBlockFieldHTerminal">Цена</div>
+            <div class="scheduleBlockFieldHTerminal">Посмотреть</div>
+            <div class="scheduleBlockFieldHTerminal">Удалить</div>
+        </div>
+        <div class="scheduleBlock" data-th-each="order : ${allOrders}">
+            <div class="scheduleBlockFieldTerminal" th:text="${order.id}"></div>
+            <div class="scheduleBlockFieldTerminal" th:text="${order.ticketId}"></div>
+            <div class="scheduleBlockFieldTerminal" th:text="${trainServ.findTrainById(order.trainId).getNameTrain()}"></div>
+            <div class="scheduleBlockFieldTerminal" th:text="${arrivalServ.findArrivalById(order.arrivalId).getDate()}"></div>
+            <div class="scheduleBlockFieldTerminal" th:text="${compartmentServ.findCompartmentById(order.compartmentId).getTypeCompartment()}"></div>
+            <div class="scheduleBlockFieldTerminal" th:text="${placeServ.findPlaceById(order.placeId).getNumberPlace()}"></div>
+            <div class="scheduleBlockFieldTerminal" th:text="${placeServ.findPlaceById(order.placeId).getPrice()}"></div>
+            <form class="scheduleBlockButtonTerminal" th:action="@{/mainClient/myTicket/viewMyTicket}" method="get">
+                <input type="hidden" name="orderId" th:value="${order.id}"/>
+                <button class="scheduleBlockButtonTerminalSubmit" type="submit">Посмотреть</button>
+            </form>
+            <form class="scheduleBlockButtonTerminal" th:action="@{/mainClient/myTicket/deleteMyTicket}" method="get">
+                <input type="hidden" name="orderId" th:value="${order.id}"/>
+                <button class="scheduleBlockButtonTerminalSubmit" type="submit">Удалить</button>
+            </form>
+        </div>
+    </div>
+    <div class="tableBlockLink">
+        <a class="tableBlockLinkA" href="/mainClient">Вернуться</a>
+    </div>
+</div>
+<div class="free">
+
+</div>
+<div class="basement">
+    <div class="basementBlock">
+        <div class="basementBlockLeft">
+            <div class="basementBlockLeftName">
+                О сайте
+            </div>
+            <div class="basementBlockLeftText">
+                Сайт создан для проекта по теме "РЖД", по предмету Современные технологии объектно-ориентированного программирования.
+            </div>
+        </div>
+        <div class="basementBlockRight">
+            <div class="basementBlockRightName">
+                Ссылки
+            </div>
+            <div class="basementBlockRightLink">
+                <a href="https://www.rzd.ru/ru/9269"><img alt="logo VK" class="basementBlockRightLinkImg" th:src="@{/img/logotype.png}"></a>
+                <a href="https://vk.com/id310386679"><img alt="logo RR" class="basementBlockRightLinkImg" th:src="@{/img/vk.png}"></a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

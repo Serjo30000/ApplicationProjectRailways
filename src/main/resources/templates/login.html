@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thyneleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="header">
+    <div class="headerBlock">
+        <div class="logo">
+            <a href="/"><img class="logoImg" th:src="@{/img/logotype.png}" alt="Logotype" /></a>
+        </div>
+        <div class="spaceLogo">
+
+        </div>
+        <div class="logoName" sec:authorize="isAuthenticated()">
+            <a class="logoNameLogin" href="/account" sec:authentication="name">
+            </a>
+            <div class="logoNameExit">
+                <div class="logoNameExitColor">
+                    <a class="logoNameExitLink" href="/logout">Выйти</a>
+                </div>
+            </div>
+        </div>
+        <div class="logoName" sec:authorize="!isAuthenticated()">
+            <a class="logoNameLogin" href="/" >
+                Логин
+            </a>
+            <div class="logoNameExit">
+                <div class="logoNameExitColor">
+                    <a class="logoNameExitLink" href="/login">Войти</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="loginForm">
+    <div class="loginFormBlock">
+        <div class="loginFormBlockName">
+            Вход в аккаунт
+        </div>
+        <div class="loginFormBlockTextError" th:if="${param.error}">
+            Неправильный пароль или логин.</div>
+        <div class="loginFormBlockText" th:if="${param.logout}">
+            Вы вышли из системы.</div>
+        <form  th:action="@{/login}" method="post">
+            <div class="loginFormBlockText">
+                <input class="settingFormBlockInput" type="text" name="username" placeholder="Логин" required/>
+            </div>
+            <div class="loginFormBlockText">
+                <input class="settingFormBlockInput" type="password" name="password" placeholder="Пароль" required/>
+            </div>
+            <div class="loginFormBlockDown">
+                <div class="loginFormBlockDownLinks">
+                    <a class="loginFormBlockDownLink" href="/registration">Зарегистрироваться</a>
+                    <a class="loginFormBlockDownLink" href="/">Вернуться</a>
+                </div>
+                <div class="loginFormBlockDownBut">
+                    <button class="loginFormBlockDownButton" type="submit">Войти</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="free">
+
+</div>
+<div class="basement">
+    <div class="basementBlock">
+        <div class="basementBlockLeft">
+            <div class="basementBlockLeftName">
+                О сайте
+            </div>
+            <div class="basementBlockLeftText">
+                Сайт создан для проекта по теме "РЖД", по предмету Современные технологии объектно-ориентированного программирования.
+            </div>
+        </div>
+        <div class="basementBlockRight">
+            <div class="basementBlockRightName">
+                Ссылки
+            </div>
+            <div class="basementBlockRightLink">
+                <a href="https://www.rzd.ru/ru/9269"><img alt="logo VK" class="basementBlockRightLinkImg" th:src="@{/img/logotype.png}"></a>
+                <a href="https://vk.com/id310386679"><img alt="logo RR" class="basementBlockRightLinkImg" th:src="@{/img/vk.png}"></a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

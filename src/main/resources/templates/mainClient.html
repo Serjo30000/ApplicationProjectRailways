@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thyneleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Покупка билета</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="header">
+    <div class="headerBlock">
+        <div class="logo">
+            <a href="/"><img class="logoImg" th:src="@{/img/logotype.png}" alt="Logotype" /></a>
+        </div>
+        <div class="spaceLogo">
+            <div class="spaceLogoName">
+                <a class="spaceLogoNameLink" href="/mainClient/myTicket">
+                    Мои билеты
+                </a>
+            </div>
+            <div class="spaceLogoName">
+                <a class="spaceLogoNameLink" href="/mainClient/scheduleTrain">
+                    Поезда и маршруты
+                </a>
+            </div>
+            <div  class="spaceLogoName">
+                <a class="spaceLogoNameLink" href="/mainClient/scheduleTerminal">
+                    Вокзалы
+                </a>
+            </div>
+        </div>
+        <div class="logoName" sec:authorize="isAuthenticated()">
+            <a class="logoNameLogin" href="/account" sec:authentication="name">
+            </a>
+            <div class="logoNameExit">
+                <div class="logoNameExitColor">
+                    <a class="logoNameExitLink" href="/logout">Выйти</a>
+                </div>
+            </div>
+        </div>
+        <div class="logoName" sec:authorize="!isAuthenticated()">
+            <a class="logoNameLogin" href="/" >
+                Логин
+            </a>
+            <div class="logoNameExit">
+                <div class="logoNameExitColor">
+                    <a class="logoNameExitLink" href="/login">Войти</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="search">
+    <form class="searchBlock" th:action="@{/mainClient}" method="post">
+        <tr th:each="ticket,i : ${allTickets}">
+            <td><input name="lstTick" th:value="${ticket.getId()}" type="hidden"></td>
+        </tr>
+        <div class="searchBlockTown1">
+            <input name="searchTownNameFirst" class="searchBlockTown1Input" type="text" placeholder="Откуда" required></form:input>
+        </div>
+        <div class="searchBlockTown2">
+            <input name="searchTownNameSecond" class="searchBlockTown2Input" type="text" placeholder="Куда" required></form:input>
+        </div>
+        <div class="searchBlockDate1">
+            <input name="searchDateFirst" class="searchBlockDate1Input" type="date" required></form:input>
+        </div>
+        <div class="searchBlockDate2">
+            <input name="searchDateSecond" class="searchBlockDate2Input" type="date" required></form:input>
+        </div>
+        <div class="searchBlockButton">
+            <button class="searchBlockButtonSubmit" type="submit">Найти</button>
+        </div>
+    </form>
+</div>
+<div class="sort">
+    <div class="sortBlocks">
+        <form class="sortBlock" th:action="@{/mainClient}" method="post">
+            <div class="sortBlockChoice1">
+                <tr th:each="ticket,i : ${allTickets}">
+                    <td><input name="lstTick" th:value="${ticket.getId()}" type="hidden"></td>
+                </tr>
+                <select name="sortName" class="sortBlockChoice1Select" size="1" required>
+                    <option selected value="Отсутствует">Отсутствует</option>
+                    <option value="По времени отправления">По времени отправления</option>
+                    <option value="По времени прибытия">По времени прибытия</option>
+                    <option value="По времени в пути">По времени в пути</option>
+                    <option value="По стоимости">По стоимости</option>
+                </select>
+            </div>
+            <div class="sortBlockChoice2">
+                <select name="sortBy" class="sortBlockChoice2Select" size="1" required>
+                    <option selected value="По возрастанию">По возрастанию</option>
+                    <option value="По убыванию">По убыванию</option>
+                </select>
+            </div>
+            <div th:if="${allTickets.size()>0}" class="sortBlockButton">
+                <button class="sortBlockButtonSubmit" type="submit">Применить</button>
+            </div>
+            <div th:if="${allTickets.size()<=0}" class="sortBlockButton">
+                <button class="sortBlockButtonSubmit" type="button">Применить</button>
+            </div>
+        </form>
+        <form class="sortBlockReset" th:action="@{/mainClient}" method="post">
+            <div class="sortBlockButtonReset">
+                <button class="sortBlockButtonSubmit" type="submit">Сбросить</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="content">
+    <div class="contentBlock">
+        <div class="filter">
+            <form class="filterBlock" th:action="@{/mainClient}" method="post">
+                <tr th:each="ticket,i : ${allTickets}">
+                    <td><input name="lstTick" th:value="${ticket.getId()}" type="hidden"></td>
+                </tr>
+                <div class="filterBlockName">
+                    Фильтр
+                </div>
+                <div class="filterBlockNamePrice">
+                    Стоимость
+                </div>
+                <div class="filterBlockPrice">
+                    <input name="filterChoice1" class="filterBlockPriceInput" min="0" max="2147483647" type="number" placeholder="Стоимость"></input>
+                </div>
+                <div class="filterBlockNamePrice">
+                    Время отбытия
+                </div>
+                <div class="filterBlockPrice">
+                    <input name="filterChoice2" class="filterBlockPriceInput" type="date" placeholder="Время отбытия"></input>
+                </div>
+                <div class="filterBlockNamePrice">
+                    Время прибытия
+                </div>
+                <div class="filterBlockPrice">
+                    <input name="filterChoice3" class="filterBlockPriceInput" type="date" placeholder="Время прибытия"></input>
+                </div>
+                <div class="filterBlockNamePrice">
+                    Название поезда
+                </div>
+                <div class="filterBlockNamePriceN">
+                    Любое название
+                </div>
+                <div class="filterBlockPriceC">
+                    <input name="filterChoice4" class="filterBlockPriceСheckbox" type="checkbox"></input>
+                </div>
+                <div class="filterBlockNamePriceN">
+                    Арктика
+                </div>
+                <div class="filterBlockPriceC">
+                    <input name="filterChoice5" class="filterBlockPriceСheckbox" type="checkbox"></input>
+                </div>
+                <div class="filterBlockNamePriceN">
+                    Волга
+                </div>
+                <div class="filterBlockPriceC">
+                    <input name="filterChoice6" class="filterBlockPriceСheckbox" type="checkbox"></input>
+                </div>
+                <div class="filterBlockNamePriceN">
+                    Гранд
+                </div>
+                <div class="filterBlockPriceC">
+                    <input name="filterChoice7" class="filterBlockPriceСheckbox" type="checkbox"></input>
+                </div>
+                <div class="filterBlockNamePriceN">
+                    Красная Стрела
+                </div>
+                <div class="filterBlockPriceC">
+                    <input name="filterChoice8" class="filterBlockPriceСheckbox" type="checkbox"></input>
+                </div>
+                <div class="filterBlockNamePriceN">
+                    ЛАСТОЧКА
+                </div>
+                <div class="filterBlockPriceC">
+                    <input name="filterChoice9" class="filterBlockPriceСheckbox" type="checkbox"></input>
+                </div>
+                <div class="filterBlockNamePriceN">
+                    МЕГАПОЛИС
+                </div>
+                <div class="filterBlockPriceC">
+                    <input name="filterChoice10" class="filterBlockPriceСheckbox" type="checkbox"></input>
+                </div>
+                <div class="filterBlockNamePriceN">
+                    САПСАН
+                </div>
+                <div class="filterBlockPriceC">
+                    <input name="filterChoice11" class="filterBlockPriceСheckbox" type="checkbox"></input>
+                </div>
+                <div class="filterBlockNamePriceN">
+                    Бетанкур
+                </div>
+                <div class="filterBlockPriceC">
+                    <input name="filterChoice12" class="filterBlockPriceСheckbox" type="checkbox"></input>
+                </div>
+                <div class="filterBlockNamePriceN">
+                    Экспресс
+                </div>
+                <div class="filterBlockPriceC">
+                    <input name="filterChoice13" class="filterBlockPriceСheckbox" type="checkbox"></input>
+                </div>
+                <div class="filterBlockNamePrice">
+                    Тип поезда
+                </div>
+                <div class="filterBlockNamePriceN">
+                    Любой тип
+                </div>
+                <div class="filterBlockPriceC">
+                    <input name="filterChoice14" class="filterBlockPriceСheckbox" type="checkbox"></input>
+                </div>
+                <div class="filterBlockNamePriceN">
+                    Классический
+                </div>
+                <div class="filterBlockPriceC">
+                    <input name="filterChoice15" class="filterBlockPriceСheckbox" type="checkbox"></input>
+                </div>
+                <div class="filterBlockNamePriceN">
+                    Скоростной
+                </div>
+                <div class="filterBlockPriceC">
+                    <input name="filterChoice16" class="filterBlockPriceСheckbox" type="checkbox"></input>
+                </div>
+                <div class="filterBlockNamePriceN">
+                    Фирменный
+                </div>
+                <div class="filterBlockPriceC">
+                    <input name="filterChoice17" class="filterBlockPriceСheckbox" type="checkbox"></input>
+                </div>
+                <div class="filterBlockNamePriceN">
+                    Двухэтажный
+                </div>
+                <div class="filterBlockPriceC">
+                    <input name="filterChoice18" class="filterBlockPriceСheckbox" type="checkbox"></input>
+                </div>
+                <div class="filterBlockButton">
+                    <button class="filterBlockButtonSubmit" type="reset">Сбросить</button>
+                </div>
+                <div class="filterBlockButton">
+                    <button class="filterBlockButtonSubmit" type="submit">Применить</button>
+                </div>
+            </form>
+        </div>
+        <div class="billet">
+            <div data-th-each="ticket : ${allTickets}">
+                <div class="billetBlock">
+                    <div class="billetBlockWindow">
+                        <div class="billetBlockWindowType" th:text="${ticketServ.findTrainByTicketId(ticket.id).getTypeTrain()}">
+
+                        </div>
+                        <div class="billetBlockWindowNameRoute">
+                            <div class="billetBlockWindowName" th:text="${ticketServ.findTrainByTicketId(ticket.id).getNameTrain()}">
+
+                            </div>
+                            <form class="billetBlockWindowRoute" th:action="@{/mainClient/ticketArrival}" method="get">
+                                <input type="hidden" name="ticketId" th:value="${ticket.id}"/>
+                                <button class="billetBlockWindowRouteButton" type="submit">Маршрут</button>
+                            </form>
+                        </div>
+                        <div class="billetBlockWindowDateCompartment">
+                            <div class="billetBlockWindowDate">
+                                <div class="billetBlockWindowDateText" >
+                                    <div>Начальная:</div>
+                                    <div class="billetBlockWindowDateTextField">
+                                        <div>Вокзал</div>
+                                        <div th:text="${arrivalServ.findTerminalByArrivalId(ticketServ.allArrivals(ticket.id).get(0).getId()).getName() }"></div>
+                                    </div>
+                                    <div class="billetBlockWindowDateTextField">
+                                        <div>Город</div>
+                                        <div th:text="${terminalServ.findTownByTerminalId(arrivalServ.findTerminalByArrivalId(ticketServ.allArrivals(ticket.id).get(0).getId()).getId()).getTownName() }"></div>
+                                    </div>
+                                    <div class="billetBlockWindowDateTextField">
+                                        <div>Страна</div>
+                                        <div th:text="${townServ.findCountryByTownId(terminalServ.findTownByTerminalId(arrivalServ.findTerminalByArrivalId(ticketServ.allArrivals(ticket.id).get(0).getId()).getId()).getId()).getCountryName() }"></div>
+                                    </div>
+                                    <div class="billetBlockWindowDateTextField">
+                                        <div>Дата</div>
+                                        <div th:text="${ticketServ.allArrivals(ticket.id).get(0).getDate()}"></div>
+                                    </div>
+                                </div>
+                                <div class="billetBlockWindowDateText">
+                                    <div>Конечная: </div>
+                                    <div class="billetBlockWindowDateTextField">
+                                        <div>Вокзал</div>
+                                        <div th:text="${arrivalServ.findTerminalByArrivalId(ticketServ.allArrivals(ticket.id).get(ticketServ.allArrivals(ticket.id).size()-1).getId()).getName() }"></div>
+                                    </div>
+                                    <div class="billetBlockWindowDateTextField">
+                                        <div>Город</div>
+                                        <div th:text="${terminalServ.findTownByTerminalId(arrivalServ.findTerminalByArrivalId(ticketServ.allArrivals(ticket.id).get(ticketServ.allArrivals(ticket.id).size()-1).getId()).getId()).getTownName() }"></div>
+                                    </div>
+                                    <div class="billetBlockWindowDateTextField">
+                                        <div>Страна</div>
+                                        <div th:text="${townServ.findCountryByTownId(terminalServ.findTownByTerminalId(arrivalServ.findTerminalByArrivalId(ticketServ.allArrivals(ticket.id).get(ticketServ.allArrivals(ticket.id).size()-1).getId()).getId()).getId()).getCountryName() }"></div>
+                                    </div>
+                                    <div class="billetBlockWindowDateTextField">
+                                        <div>Дата</div>
+                                        <div th:text="${ticketServ.allArrivals(ticket.id).get(ticketServ.allArrivals(ticket.id).size()-1).getDate()}"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="billetBlockWindowCompartment">
+                                <div class="billetBlockWindowCompartmentText" >
+                                        <div data-th-each="b1 : ${lstViewCompartment}">
+                                            <div>
+                                                Тип
+                                                <div th:text="${b1}"> </div>
+                                            </div>
+                                            <div>
+                                                Цена
+                                                <div th:if="${ticketServ.averagePriceTrain(ticket.id).get(b1)!=null}" th:text="${ticketServ.averagePriceTrain(ticket.id).get(b1)}"> </div>
+                                                <div th:if="${ticketServ.averagePriceTrain(ticket.id).get(b1)==null}" >-</div>
+                                            </div>
+                                            <div>
+                                                Количество
+                                                <div th:if="${ticketServ.averageCountTrain(ticket.id).get(b1)!=null}" th:text="${ticketServ.averageCountTrain(ticket.id).get(b1)}"> </div>
+                                                <div th:if="${ticketServ.averageCountTrain(ticket.id).get(b1)==null}" >-</div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <form class="billetBlockWindowChoice" th:action="@{/mainClient/buyTerminal}" method="get">
+                            <input type="hidden" name="ticketId" th:value="${ticket.id}"/>
+                            <button class="billetBlockWindowChoiceButton" type="submit">Выбрать</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="free">
+
+</div>
+<div class="basement">
+    <div class="basementBlock">
+        <div class="basementBlockLeft">
+            <div class="basementBlockLeftName">
+                О сайте
+            </div>
+            <div class="basementBlockLeftText">
+                Сайт создан для проекта по теме "РЖД", по предмету Современные технологии объектно-ориентированного программирования.
+            </div>
+        </div>
+        <div class="basementBlockRight">
+            <div class="basementBlockRightName">
+                Ссылки
+            </div>
+            <div class="basementBlockRightLink">
+                <a href="https://www.rzd.ru/ru/9269"><img alt="logo VK" class="basementBlockRightLinkImg" th:src="@{/img/logotype.png}"></a>
+                <a href="https://vk.com/id310386679"><img alt="logo RR" class="basementBlockRightLinkImg" th:src="@{/img/vk.png}"></a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
